@@ -50,7 +50,7 @@ small {
     color: #f6ff68;
 }
 #back{
-    background-color: lightgrey;
+    background-color: white;
     margin-top: -40px;
     margin-bottom: -25px;
 }
@@ -65,4 +65,60 @@ h1 {
     font-weight: normal;
     line-height: 48px;
     margin: 0;
+}
+.edit-product{
+    color: white;
+    background-color: #f7653b;
+    border: 3px solid #ffffff;
+    border-radius: 7px;
+    font-size: 20px;
+    align-content: center;
+}
+.edit-product:hover {
+    color: #f7653b;
+    background-color: #ffffff;
+    border-color:#f7653b;
+}
+.delete-product {
+    font-size: 15px;
+}
+.btn-outline-danger:hover {
+    color: #fcf3f3;
+    background-color: darkred;
+    border-color: #efa9b0;
+}
+.card-title {
+    text-transform: uppercase;
+    color:#f7653b;
+    font-family: system-ui, serif;
+    font-weight: bold;
+    padding-top: 35px;
+}
+.card-text {
+    color:black;
+    font-family: system-ui, serif;
+    padding-top: 15px;
+}
+#month {
+    color:black;
+    font-family: system-ui, serif;
+}
+.price {
+    padding-top: 30px;
+}
+.btn-block{
+    border: 2px solid #2676a3;;
+    width: 200px;
+    margin-bottom: 20px;
+    color: white;
+    background-color: #0d6efd;
+    font-size: 15px;
+}
+.btn-block:hover{
+    border: 2px solid #2676a3;;
+    color: #2676a3;
+    background-color: white;
+}
+.btn-outline-primary {
+    margin-bottom: 15px;
 }

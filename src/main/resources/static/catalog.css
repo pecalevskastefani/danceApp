@@ -55,9 +55,9 @@ div .text-center:first-of-type{
     color: #f6ff68;
 }
 .btn-outline-danger:hover {
-color: #fcf3f3;
-background-color: darkred;
-border-color: #efa9b0;
+    color: #fcf3f3;
+    background-color: darkred;
+    border-color: #efa9b0;
 }
 small {
     color: #ffffff;

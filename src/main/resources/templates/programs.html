@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Programs</title>
     <link href="header.css" rel="stylesheet">
     <link href="programs.css" rel="stylesheet">
 </head>
@@ -24,7 +25,7 @@
                         <div class="row program" style="width: 1000px">
                             <div class="col-2">
                                 <img  class="card-img-top" th:src="${p.getUrl()}"
-                                      alt="#" height="95px" width="105px">
+                                      alt="#" height="100px" width="120px">
                             </div>
                             <div class="col-2">
                                 <h5  class="card-title" th:text="${p.getName()}"></h5>
@@ -33,8 +34,8 @@
                                 <p class="card-text" th:text="${p.getDescription()}"></p>
                             </div>
                             <div class="col-2">
-                                <div>
-                                    <span class="card-text" th:text="${p.getPrice()}"></span> /Month
+                                <div class="price">
+                                    <span class="card-text" th:text="${p.getPrice()}"></span><a id="month">/Month</a>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -45,49 +46,47 @@
                                     </a>
                                 </th:block>
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                                    <form th:action="@{'/deleteProgram/{id}' (id=${p.getId()})}"
-                                          th:method="POST">
-                                        <button type="submit"
-                                                class="btn btn-sm btn-dark delete-product">
-                                            <i class="fa fa-trash">Delete Program</i>
-                                        </button>
-                                    </form>
-                                </th:block>
-                                <br>
-
-                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                                     <a th:href="@{'/programs/edit-form/{id}' (id=${p.getId()})}"
                                        class="btn btn-sm btn-warning edit-product">
                                         <i class="fa fa-trash">Edit Program</i>
                                     </a>
                                 </th:block>
-
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <form th:action="@{'/deleteProgram/{id}' (id=${p.getId()})}"
+                                          th:method="POST">
+                                        <button type="submit"
+                                                class="btn btn-outline-danger delete-product">
+                                            <i class="fa fa-trash">Delete Program</i>
+                                        </button>
+                                    </form>
+                                </th:block>
+                                <br>
                             </div>
-
                         </div>
-
                     </div>
 
                 </div>
 
             </div>
         </div>
-        <div class="col mb-3">
+        <div class="col mb-3 text-center">
             <div class="row">
-                <div class="col-4">
+                <div>
                     <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                         <a th:href="@{'/programs/add-form'}"
-                           class="btn btn-sm btn-secondary edit-product">
+                           class="btn btn-block btn-primary edit-product">
                             <i class="fa fa-trash">Add new Program</i>
                         </a>
                     </th:block>
                 </div>
             </div>
+            <div class="text-center">
+                <a href="/home" class="btn btn-outline-primary">Back</a>
+            </div>
         </div>
-
     <div class="footer">
         <div class="container">
-            <a href="/home" style="color: yellow"> Back </a>
+            <a></a>
         </div>
     </div>
 </div>
