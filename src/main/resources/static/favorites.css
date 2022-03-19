@@ -1,0 +1,57 @@
+div .text-center:first-of-type{
+    padding-top: -3px;
+    background-image: url("/images/DSC_9865.jpg");
+    max-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+
+}
+.jumbotron-heading{
+    font-weight: 600;
+    color: #f6ff68;
+}
+small {
+    color: #ffffff;
+    font-weight: 700;
+}
+h1{
+    color: #7c795d;
+    font-family: 'Trocchi', serif;
+    font-size: 55px;
+    font-weight: normal;
+    line-height: 48px;
+    margin: 0; }
+div.wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(109px, auto);
+    width: 850px;
+    margin-left: 500px;
+}
+.jumbotron{
+    opacity: 1;
+    background-color: white;
+}
+
+.container {
+    margin: auto;
+    width: auto;
+}
+
+small {
+    color: #ffffff;
+    font-weight: 700;
+}
+.footer{
+    background-image: url("/images/DSC_9865.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: white;
+    height: 200px;
+    margin-top: -20px;
+}

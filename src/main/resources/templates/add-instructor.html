@@ -1,0 +1,63 @@
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add instructor</title>
+    <link href="header.css" rel="stylesheet">
+
+</head>
+
+<div xmlns:th="http://www.thymeleaf.org">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/instructors/add" method="POST">
+                    <input id="id" type="hidden" name="id" th:value="(${instructor} != null ? ${instructor.getId()} : '')">
+                    <div class="form-group">
+                        <label for="name">Instructor name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="name"
+                               th:value="(${instructor} != null ? ${instructor.getName()} : '')"
+                               required
+                               placeholder="Enter instructor name">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Surname</label>
+                        <input type="text"
+                               class="form-control"
+                               id="surname"
+                               name="surname"
+                               th:value="(${instructor} != null ? ${instructor.getSurname()} : '')"
+                               placeholder="Surname">
+                    </div>
+
+                    <div class="form-group" th:if="${instructor!= null}">
+                        <label>Skills</label>
+                        <select name="skills" class="form-control" multiple>
+                            <option th:each="s : ${skills}"
+                                    th:value="${s.getId()}"
+                                    th:text="${s.getName()}"
+                                    th:selected="${instructor!=null? instructor.getSkills().toString().equals(s.toString()):null}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="url">Image url</label>
+                        <input type="text"
+                               class="form-video"
+                               id="url"
+                               name="url"
+                               th:value="(${instructor} != null ? ${instructor.getUrl()} : '')"
+                               placeholder="Url">
+                    </div>
+
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                    <a type="button" class="btn btn-primary" href="/instructors">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

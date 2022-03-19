@@ -1,0 +1,18 @@
+section{
+    padding-top: -3px;
+    background-image: url("/images/DSC_9865.jpg");
+    background-size: cover;
+    background-position: center center;
+}
+.jumbotron-heading{
+    font-weight: 600;
+    color: #f6ff68;
+}
+h1 {
+    color: #7c795d;
+    font-family: 'Trocchi', serif;
+    font-size: 55px;
+    font-weight: normal;
+    line-height: 48px;
+    margin: 0; }
+p { color: #4c4a37; font-family: 'Source Sans Pro', sans-serif; font-size: 22px; line-height: 32px; margin: 0 0 24px; }

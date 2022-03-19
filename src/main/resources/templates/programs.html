@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="header.css" rel="stylesheet">
+    <link href="programs.css" rel="stylesheet">
+</head>
+<body>
+<div xmlns:th="http://www.thymeleaf.org" >
+
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">PROGRAMS</h1>
+            <small>GROOVE AND GO</small>
+        </div>
+    </div>
+    <div th:if="${hasError}">
+        <h5 class="text-center text-danger" th:text="${error}"></h5>
+    </div>
+        <div class="jumbotron text-center" id="back">
+            <div class="container" id="box">
+                <div class="wrapper" th:if="${programs.size() > 0}">
+                    <div th:each="p : ${programs}" style="
+                width:415px;">
+                        <div class="row program" style="width: 1000px">
+                            <div class="col-2">
+                                <img  class="card-img-top" th:src="${p.getUrl()}"
+                                      alt="#" height="95px" width="105px">
+                            </div>
+                            <div class="col-2">
+                                <h5  class="card-title" th:text="${p.getName()}"></h5>
+                            </div>
+                            <div class="col-3">
+                                <p class="card-text" th:text="${p.getDescription()}"></p>
+                            </div>
+                            <div class="col-2">
+                                <div>
+                                    <span class="card-text" th:text="${p.getPrice()}"></span> /Month
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <th:block sec:authorize="hasRole('ROLE_USER')">
+                                    <a th:href="@{'/programs/apply/{id}' (id=${p.getId()})}"
+                                       class="btn btn-sm btn-warning">
+                                        <i class="fa fa-trash " role="alert" onclick="alert('Congratulations! You applied successfully to this program');" >Apply</i>
+                                    </a>
+                                </th:block>
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <form th:action="@{'/deleteProgram/{id}' (id=${p.getId()})}"
+                                          th:method="POST">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-dark delete-product">
+                                            <i class="fa fa-trash">Delete Program</i>
+                                        </button>
+                                    </form>
+                                </th:block>
+                                <br>
+
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <a th:href="@{'/programs/edit-form/{id}' (id=${p.getId()})}"
+                                       class="btn btn-sm btn-warning edit-product">
+                                        <i class="fa fa-trash">Edit Program</i>
+                                    </a>
+                                </th:block>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col mb-3">
+            <div class="row">
+                <div class="col-4">
+                    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{'/programs/add-form'}"
+                           class="btn btn-sm btn-secondary edit-product">
+                            <i class="fa fa-trash">Add new Program</i>
+                        </a>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+
+    <div class="footer">
+        <div class="container">
+            <a href="/home" style="color: yellow"> Back </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

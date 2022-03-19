@@ -1,0 +1,113 @@
+<head>
+    <title>Instructors</title>
+    <link href="header.css" rel="stylesheet">
+    <link href="instructors.css" rel="stylesheet">
+</head>
+<script>
+    $(document).ready(function () {$("p").hide();
+        $('.image').hover(function(){
+            $(this).css("opacity","0.7");
+            $(this).siblings().find('p').show();
+        }, function(){
+            $(this).css("opacity","1");
+            $(this).siblings().find('p').hide();
+
+        });
+        $('.btn-dark').click(function (){
+            $(this).siblings().find(".form-group").css("display","");
+        });
+        $('.btn-primary').click(function (){
+            $(this).parent("div").css("display","none");
+        });
+    });
+</script>
+<div xmlns:th="http://www.thymeleaf.org">
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">INSTRUCTORS</h1>
+            <small>GROOVE AND GO</small>
+        </div>
+    </div>
+
+    <div th:if="${hasError}">
+        <h5 class="text-center text-danger" th:text="${error}"></h5>
+    </div>
+
+    <div class="jumbotron text-center ">
+        <div class="container" >
+            <div class="wrapper row" th:if="${instructors.size() > 0}">
+            <div th:each="i : ${instructors}" class="col-4 carousel" >
+                <div class="card-group">
+                    <div class="card">
+                        <img class="card-img-top image" th:src="${i.getUrl()}"
+                              height="400px" width="330px">
+                        <div class="card-body">
+                            <div class="info-instructor">
+                                <p  class="card-title" th:text="${i.getName()}"></p>
+                                <p class="card-title" th:text="${i.getSurname()}"></p>
+                             <p class="card-text"  th:text="${i.getSkills().isEmpty()}
+                            ? 'No Skills' : ${i.getSkills()}"></p>
+                            </div>
+                        </div>
+
+                        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                            <form th:action="@{'/deleteInstructor/{id}' (id=${i.getId()})}"
+                                  th:method="POST">
+                                <button type="submit"
+                                        class="btn btn-sm btn-danger delete-product">
+                                    <i class="fa fa-trash">Delete Instructor</i>
+                                </button>
+                            </form>
+                        </th:block>
+
+                        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{'/instructors/edit-form/{id}' (id=${i.getId()})}"
+                               class="btn btn-sm btn-info edit-product">
+                                <i class="fa fa-trash">Edit Instructor</i>
+                            </a>
+                        </th:block>
+                        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+
+                            <a class="btn btn-dark ">
+                                <i class="fa fa-trash te">Add skill</i>
+                            </a>
+
+                        </th:block>
+                         <form th:action="@{'/addSkill/{id}' (id=${i.getId()})}" th:method="POST">
+                        <div class="form-group" style="display: none">
+                            <label>Skills</label>
+                            <select name="skills" class="form-control" multiple>
+                                <option th:each="s : ${skills}"
+                                        th:value="${s.getId()}"
+                                        th:text="${s.getName()}">
+                                </option>
+                            </select>
+                            <button class="btn" type="submit">Add</button>
+                            <a class="btn-primary" type="button" style="cursor: pointer">Cancel</a>
+                        </div>
+                            </form>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="text-center">
+
+            <br>
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                <a th:href="@{'/instructors/add-form'}"
+                   class="btn btn-sm edit-instructor ">
+                    <i class="fa fa-trash te">Add new instructor</i>
+                </a>
+            </th:block>
+            <a type="button" class="btn" href="/home">Back</a>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <a href="/home" style="color: yellow"> Back </a>
+        </div>
+    </div>
+
+</div>

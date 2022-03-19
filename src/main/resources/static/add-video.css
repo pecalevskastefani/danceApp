@@ -1,0 +1,54 @@
+div .text-center:first-of-type{
+    padding-top: -3px;
+    background-image: url("https://scontent.fskp1-2.fna.fbcdn.net/v/t1.6435-9/90103105_10156819691852056_1538107172578131968_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=19026a&_nc_ohc=ajBY27-AgqgAX__OpTJ&_nc_ht=scontent.fskp1-2.fna&oh=00_AT_70p-SKcbp7yqYDVAJw-bG0HBXB_gejBKlTvnIQw_AaA&oe=623F375B");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.jumbotron{
+    opacity: 1;
+}
+.jumbotron-heading{
+    font-weight: 600;
+    color: #f9ff9c;
+}
+.container {
+    margin: auto;
+    width: auto;
+}
+.form-group{
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    color: #435e5e;
+    font-weight: bold;
+    margin-top: 20px;
+}
+input,select {
+    text-align: center;
+    display: block;
+}
+.form{
+    border: 2px solid #f6f490;
+    border-radius: 15px 15px 15px 15px;
+    margin: 0 auto;
+    width: 400px;
+}
+.btn-primary{
+    color: #f6f490;
+    background-color: #087b7e;
+    border: 3px solid #ffffff;
+    font-weight: 600;
+    border-radius: 7px;
+    width: 150px;
+}
+.btn-primary:hover {
+    color: #087b7e;
+    background-color: #ffffff;
+    border-color: #087b7e;
+}
+.form-video {
+    border: 2px solid #f6f490;
+    border-radius: 15px 15px 15px 15px;
+    margin: 0 auto;
+    width: 600px;
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="header.css" rel="stylesheet">
+    <!--<link href="add-video.css" rel="stylesheet">-->
+    <style>
+        div .text-center:first-of-type{
+            padding-top: -3px;
+            background-image: url("https://scontent.fskp1-2.fna.fbcdn.net/v/t1.6435-9/90103105_10156819691852056_1538107172578131968_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=19026a&_nc_ohc=ajBY27-AgqgAX__OpTJ&_nc_ht=scontent.fskp1-2.fna&oh=00_AT_70p-SKcbp7yqYDVAJw-bG0HBXB_gejBKlTvnIQw_AaA&oe=623F375B");
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .jumbotron{
+            opacity: 1;
+        }
+        .jumbotron-heading{
+            font-weight: 600;
+            color: #f9ff9c;
+        }
+        .container {
+            margin: auto;
+            width: auto;
+        }
+        .form-group{
+            font-size: 20px;
+            text-align: center;
+            display: block;
+            color: #435e5e;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        input,select {
+            text-align: center;
+            display: block;
+        }
+        .form{
+            border: 2px solid #f6f490;
+            border-radius: 15px 15px 15px 15px;
+            margin: 0 auto;
+            width: 400px;
+        }
+        .btn-primary{
+            color: #f6f490;
+            background-color: #087b7e;
+            border: 3px solid #ffffff;
+            font-weight: 600;
+            border-radius: 7px;
+            width: 150px;
+        }
+        .btn-primary:hover {
+            color: #087b7e;
+            background-color: #ffffff;
+            border-color: #087b7e;
+        }
+        .form-video {
+            border: 2px solid #f6f490;
+            border-radius: 15px 15px 15px 15px;
+            margin: 0 auto;
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+<div xmlns:th="http://www.thymeleaf.org">
+
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">GROOVE AND GO</h1>
+            <h3 class="jumbotron-heading"></h3>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="center">
+                <form action="/add" method="POST">
+                    <input id="id" type="hidden" name="id" th:value="(${video} != null ? ${video.getId()} : '')">
+                    <div class="form-group">
+                        <label for="title">Video name</label>
+                        <input type="text"
+                               class="form"
+                               id="title"
+                               name="title"
+                               th:value="(${video} != null ? ${video.getTitle()} : '')"
+                               required
+                               placeholder="Enter video Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text"
+                               class="form"
+                               id="description"
+                               name="description"
+                               th:value="(${video} != null ? ${video.getDescription()} : '')"
+                               placeholder="Description">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="categoryId" class="form" >
+                            <option th:if="${video} != null"
+                                    th:each="cat : ${categories}"
+                                    th:selected="${video.getCategory() != null &&
+                                video.getCategory().getId() == cat.getId()}"
+                                    th:value="${cat.getId()}"
+                                    th:text="${cat.getName()}">
+                            </option>
+                            <option th:if="${video} == null"
+                                    th:each="cat : ${categories}"
+                                    th:value="${cat.getId()}"
+                                    th:text="${cat.getName()}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Coach</label>
+                        <select name="coachId" class="form">
+                            <option th:if="${video} != null"
+                                    th:each="c : ${instructors}"
+                                    th:selected="${video.getInstructor() != null &&
+                                     video.getInstructor().getId() == c.getId()}"
+                                    th:value="${c.getId()}"
+                                    th:text="${c.getName()}">
+                            </option>
+                            <option th:if="${video} == null"
+                                    th:each="c : ${instructors}"
+                                    th:value="${c.getId()}"
+                                    th:text="${c.getName()}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="url">Video url</label>
+                        <input type="text"
+                               class="form-video"
+                               id="url"
+                               name="url"
+                               th:value="(${video} != null ? ${video.getUrl()} : '')"
+                               placeholder="Url">
+                    </div>
+                    <div class="text-center">
+                        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                        <a type="button" class="btn btn-primary" href="/catalog">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

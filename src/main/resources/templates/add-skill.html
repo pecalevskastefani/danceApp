@@ -1,0 +1,65 @@
+<body>
+<div xmlns:th="http://www.thymeleaf.org">
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">GROOVE AND GO</h1>
+            <h3 class="jumbotron-heading"></h3>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="center">
+                <form action="/skills/add" method="POST">
+                    <input id="id" type="hidden" name="id" th:value="(${program} != null ? ${program.getId()} : '')">
+                    <div class="form-group">
+                        <label for="name">Program name</label>
+                        <input type="text"
+                               class="form"
+                               id="name"
+                               name="name"
+                               th:value="(${program} != null ? ${program.getName()} : '')"
+                               required
+                               placeholder="Enter program name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text"
+                               class="form"
+                               id="description"
+                               name="description"
+                               th:value="(${program} != null ? ${program.getDescription()} : '')"
+                               placeholder="Description">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="text"
+                               class="form"
+                               id="price"
+                               name="price"
+                               th:value="(${program} != null ? ${program.getPrice()} : '')"
+                               placeholder="Price">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Video url</label>
+                        <input type="text"
+                               class="form-program"
+                               id="url"
+                               name="url"
+                               th:value="(${program} != null ? ${program.getUrl()} : '')"
+                               placeholder="Url">
+                    </div>
+
+                    <div class="text-center">
+                        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                        <a type="button" class="btn btn-primary" href="/programs">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
