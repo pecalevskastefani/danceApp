@@ -6,11 +6,14 @@ div.wrapper {
     grid-auto-rows: minmax(109px, auto);
     width: 723px;
 }
-.card-title:hover {
-    cursor: pointer;
-}
+
 .card-img-top {
     opacity: 0.8;
+
+}
+.card-img-top:hover {
+   cursor: pointer;
+
 }
 
 div .text-center:first-of-type{
@@ -24,8 +27,8 @@ div .text-center:first-of-type{
 
 }
 #filter-form{
-    width: 251px;
-    padding-left: 29px;
+    background-color: white;
+    background-image: none;
 }
 
 .jumbotron{
@@ -62,7 +65,7 @@ small {
 }
 h5{
     text-transform: uppercase;
-    color: #ff6334;
+    color:#f7653b;
     font-weight: 700;
     font-family: system-ui, serif;
 }
@@ -80,18 +83,18 @@ h1 {
     margin: 0; }
 .btn-info {
     color: white;
-    background-color:  #ff6334;
+    background-color: #f7653b;
     border: 3px solid #ffffff;
     border-radius: 7px;
 }
 .btn-info:hover {
-    color: #ff6334;
+    color: #f7653b;
     background-color: #ffffff;
-    border-color: #ff6334;
+    border-color:#f7653b;
 }
 .btn-primary {
     color: #fff;
-    background-color: #ff6334;
+    background-color: #f7653b;
     border: 2px solid #fcffcc;
     font-weight: 600;
     border-radius: 6px;
@@ -99,30 +102,52 @@ h1 {
     padding: 8px;
 }
 .btn-primary:hover{
-    color:  #ff6334;
+    color:  #f7653b;
     background-color: #ffffff;
-    border: 1px solid  #ff6334;
+    border: 1px solid  #f7653b;
     font-weight: 600;
 }
-.btn-dark {
-    color: #fff;
-    background-color: #2676a3;
-    border: 2px solid #2676a3;;
-    width: 164px;
-    margin-top: 24px;
-}
-.btn-dark:hover {
-    color: #2676a3;
-    background-color: #fff;
+
+#add:hover {
+
     border: 2px solid  #2676a3;
     width: 164px;
     margin-top: 24px;
 }
-.col-2, .col-3 {
+label {
     font-weight: bolder;
-    color: #ff6334;
+    color: #f7653b;
     text-transform: uppercase;
     width: 196px;
-    font-size: 24px;
+    font-size: 21px;
     font-family: system-ui,sans-serif;
+    font-style: italic;
+}
+input,select{
+    border-radius: 9px;
+    border: 2px solid #b1c9c0;
+    color: #b4b4b4;
+}
+select{
+    height: 32px;
+    font-style: oblique;
+}
+#filter {
+    width: 100px;
+    margin-top: 11px;
+    border-radius: 11px;
+}
+.btn-block{
+    border: 2px solid #2676a3;;
+    width: 164px;
+    margin-top: 24px;
+    color: white;
+    background-color: #0d6efd;
+}
+.btn-block:hover{
+    border: 2px solid #2676a3;;
+    width: 164px;
+    margin-top: 24px;
+    color: #2676a3;
+    background-color: white;
 }
