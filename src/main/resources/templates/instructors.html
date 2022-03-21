@@ -5,12 +5,12 @@
 </head>
 <script>
     $(document).ready(function () {$("p").hide();
-        $('.image').hover(function(){
-            $(this).css("opacity","0.7");
-            $(this).siblings().find('p').show();
+        $('.card').hover(function(){
+            $(this).find(".image").css("opacity","0.2");
+           $(this).find(".image").siblings().find('p').show();
         }, function(){
-            $(this).css("opacity","1");
-            $(this).siblings().find('p').hide();
+            $(this).find(".image").css("opacity","1");
+             $(this).find(".image").siblings().find('p').hide();
 
         });
         $('.btn-dark').click(function (){
@@ -36,25 +36,26 @@
     <div class="jumbotron text-center ">
         <div class="container" >
             <div class="wrapper row" th:if="${instructors.size() > 0}">
-            <div th:each="i : ${instructors}" class="col-4 carousel" >
-                <div class="card-group">
+            <div th:each="i : ${instructors}" class="col-4" >
+                <div class="card-group" >
+
                     <div class="card">
                         <img class="card-img-top image" th:src="${i.getUrl()}"
-                              height="400px" width="330px">
-                        <div class="card-body">
-                            <div class="info-instructor">
-                                <p  class="card-title" th:text="${i.getName()}"></p>
-                                <p class="card-title" th:text="${i.getSurname()}"></p>
-                             <p class="card-text"  th:text="${i.getSkills().isEmpty()}
-                            ? 'No Skills' : ${i.getSkills()}"></p>
+                              height="400px" width="330px" style="position: relative; cursor: pointer" >
+                        <div class="card-body" style=" position:absolute; cursor: pointer">
+                            <div class="info-instructor" >
+                                <p  style="font-size: 25px" class="card-title" th:text="${i.getName()} + '   ' + ${i.getSurname()}"></p>
+                             <p class="card-text"  th:each="s:${i.getSkills()}" th:text="${i.getSkills().isEmpty()}
+                            ? 'No Skills' : ${s.getName()}"></p>
                             </div>
                         </div>
-
+                    </div>
+                    <div style="position: relative">
                         <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                             <form th:action="@{'/deleteInstructor/{id}' (id=${i.getId()})}"
                                   th:method="POST">
                                 <button type="submit"
-                                        class="btn btn-sm btn-danger delete-product">
+                                        class="btn btn-sm btn-outline-danger delete-product">
                                     <i class="fa fa-trash">Delete Instructor</i>
                                 </button>
                             </form>
@@ -73,21 +74,22 @@
                             </a>
 
                         </th:block>
-                         <form th:action="@{'/addSkill/{id}' (id=${i.getId()})}" th:method="POST">
-                        <div class="form-group" style="display: none">
-                            <label>Skills</label>
-                            <select name="skills" class="form-control" multiple>
-                                <option th:each="s : ${skills}"
-                                        th:value="${s.getId()}"
-                                        th:text="${s.getName()}">
-                                </option>
-                            </select>
-                            <button class="btn" type="submit">Add</button>
-                            <a class="btn-primary" type="button" style="cursor: pointer">Cancel</a>
-                        </div>
-                            </form>
+                        <form th:action="@{'/addSkill/{id}' (id=${i.getId()})}" th:method="POST">
+                            <div class="form-group" style="display: none">
+                                <label>Skills</label>
+                                <select name="skills" class="form-control" multiple>
+                                    <option th:each="s : ${skills}"
+                                            th:value="${s.getId()}"
+                                            th:text="${s.getName()}">
+                                    </option>
+                                </select>
+                                <button class="btn" type="submit">Add</button>
+                                <a class="btn-primary" type="button" style="cursor: pointer">Cancel</a>
+                            </div>
+                        </form>
 
                     </div>
+
                 </div>
             </div>
             </div>
@@ -97,16 +99,16 @@
             <br>
             <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                 <a th:href="@{'/instructors/add-form'}"
-                   class="btn btn-sm edit-instructor ">
-                    <i class="fa fa-trash te">Add new instructor</i>
+                   class="btn btn-sm edit-instructor 0" id="addNew">
+                    Add new instructor
                 </a>
             </th:block>
-            <a type="button" class="btn" href="/home">Back</a>
+            <a type="button" class="btn" href="/home" id="btn-style">Back</a>
         </div>
     </div>
     <div class="footer">
         <div class="container">
-            <a href="/home" style="color: yellow"> Back </a>
+
         </div>
     </div>
 

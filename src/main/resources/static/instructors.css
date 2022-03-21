@@ -68,29 +68,76 @@ div.wrapper {
     width: 600px;
 }
 .card-body, .info-instructor{
-    width: 330px;
+    width: 295px;
+    margin-top: 30px;
 }
 .card-title{
-    font-size: 20px;
-    font-style: italic;
+    color: rgb(241, 241, 241);
+    background: rgb(223 124 91);
+    line-height: 33px;
+    font-weight: 800;
+    font-family: "Libre Baskerville", serif;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    border-radius: 10px;
+
+}
+.card-text{
+    font-weight: 900;
+    color: rgb(74, 73, 73);
+    font-size: 15px;
 }
 .card-img-top{
     width: 330px;
 }
-.btn{
+/*.btn{
      color: darkorange;
      background-color: rebeccapurple;
      border: 3px solid #ffffff;
      font-weight: 600;
      border-radius: 7px;
     align-content: center;
- }
+ }*/
 .btn:hover {
     color: #087b7e;
     background-color: #ffffff;
     border-color: #087b7e;
+    cursor: pointer;
 }
 .btn{
-    width: 300px;
+    width:  330px;
+    border-radius: 7px;
+}
+.btn-outline-danger:hover {
+    color: #fcf3f3;
+    background-color: darkred;
+    border-color: #efa9b0;
+}
+.edit-product{
+    color: white;
+    background-color: #f7653b;
+    border: 3px solid #ffffff;
+    font-size: 14px;
+    align-content: center;
+}
+.btn-dark{
+    color: white; !important;
+    font-size: 14px;
 }
 
+.edit-product:hover {
+    color: #f7653b;
+    background-color: #ffffff;
+    border-color:#f7653b;
+}
+#btn-style{
+    border: 2px solid;
+    border-color: #f7653b;
+    width: 93px;
+}
+#addNew{
+    border: 2px solid;
+    border-color: #f7653b;
+    width: 158px;
+    height: 39px;
+}

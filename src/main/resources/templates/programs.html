@@ -14,15 +14,26 @@
             <small>GROOVE AND GO</small>
         </div>
     </div>
-    <div th:if="${hasError}">
+    <div th:if="${hasError}" class="jumbotron text-center">
         <h5 class="text-center text-danger" th:text="${error}"></h5>
     </div>
         <div class="jumbotron text-center" id="back">
-            <div class="container" id="box">
-                <div class="wrapper" th:if="${programs.size() > 0}">
+            <div class="container " id="box" >
+
+                    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                        <div style="    margin-left: 108px;">
+                            <a th:href="@{'/programs/add-form'}"
+                               class="btn btn-block btn-primary edit-product ">
+                                <i class="fa fa-trash">Add new Program</i>
+                            </a>
+                        </div>
+
+                    </th:block>
+
+                <div class="wrapper row" th:if="${programs.size() > 0}" style="margin-left: 113px;">
                     <div th:each="p : ${programs}" style="
                 width:415px;">
-                        <div class="row program" style="width: 1000px">
+                        <div class=" row program" style="width: 1000px">
                             <div class="col-2">
                                 <img  class="card-img-top" th:src="${p.getUrl()}"
                                       alt="#" height="100px" width="120px">
@@ -70,15 +81,8 @@
             </div>
         </div>
         <div class="col mb-3 text-center">
-            <div class="row">
                 <div>
-                    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a th:href="@{'/programs/add-form'}"
-                           class="btn btn-block btn-primary edit-product">
-                            <i class="fa fa-trash">Add new Program</i>
-                        </a>
-                    </th:block>
-                </div>
+
             </div>
             <div class="text-center">
                 <a href="/home" class="btn btn-outline-primary">Back</a>

@@ -4,11 +4,9 @@ div.wrapper {
     gap: 10px;
     grid-auto-rows: minmax(109px, auto);
     width: 850px;
-    margin-left: 500px;
+
 }
-#box {
-    margin-left: -230px;
-}
+
 div .text-center:first-of-type{
     padding-top: -3px;
     background-image: url("/images/DSC_9865.jpg");
@@ -26,6 +24,9 @@ div .text-center:first-of-type{
     background-repeat: no-repeat;
 
 }*/
+p:hover{
+    cursor: pointer;
+}
 .footer{
     background-image: url("/images/DSC_9865.jpg");
     background-repeat: no-repeat;
