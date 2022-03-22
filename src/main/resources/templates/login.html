@@ -1,3 +1,9 @@
+<style>
+    #fb{
+        color: white;
+        border-radius: 3px;
+    }
+</style>
 <div class="container" xmlns:th="http://www.thymeleaf.org">
     <form class="form-signin mt-xl-5" method="post" action="/login">
         <h2 class="form-signin-heading">Sign in</h2>
@@ -16,13 +22,14 @@
         <div th:text="${param.error}" class="text-danger"></div>
 
         <button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-
-
+        <br>
 </form>
 
-<a href="/register" class="btn btn-block btn-light" >Register here</a>
+<a href="/register" class="btn btn-block btn-light btn-outline-primary" >Register here</a>
+    <br>
+    <br>
     <form action="/signin/facebook" method="POST">
         <input type="hidden" name="scope" value="public_profile" />
-        <input type="submit" value="Login using Facebook"/>
+        <input type="submit" value="Login using Facebook" id="fb" class="btn btn-primary"/>
     </form>
 </div>

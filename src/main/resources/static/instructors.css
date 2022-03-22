@@ -134,8 +134,17 @@ div.wrapper {
     align-content: center;
 }
 .btn-dark{
-    color: white; !important;
+    color: white;
     font-size: 14px;
+}
+#addSkill{
+    color: white;
+}
+#addSkill:hover{
+    color: black;
+    font-size: 14px;
+    background-color: white;
+    border-color: dimgray;
 }
 
 .edit-product:hover {

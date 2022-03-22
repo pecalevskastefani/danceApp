@@ -5,6 +5,7 @@ import com.example.demo.service.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -91,7 +92,8 @@ public class DataInitializer {
                     "user" + i,
                     "User"+i,
                     "Surname"+i,
-                    this.randomizeEventType(i)
+                    this.randomizeEventType(i),
+                    LocalDate.now()
             );
         }
 

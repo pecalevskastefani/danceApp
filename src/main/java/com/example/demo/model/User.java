@@ -5,6 +5,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -18,6 +20,8 @@ public class User implements UserDetails
     String surname;
     String password;
 
+    LocalDate birthday;
+
     @Enumerated(value = EnumType.STRING)
     private Role role;
     private boolean isAccountNonExpired = true;
@@ -26,12 +30,13 @@ public class User implements UserDetails
     private boolean isEnabled = true;
     public User() {
     }
-    public User(String name, String surname, String username, String password, Role role) {
+    public User(String name, String surname, String username, String password, Role role, LocalDate birthday) {
         this.name = name;
         this.surname = surname;
         this.username=username;
         this.password = password;
         this.role = role;
+        this.birthday = birthday;
     }
 
     @Override
