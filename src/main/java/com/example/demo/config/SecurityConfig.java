@@ -1,6 +1,10 @@
 package com.example.demo.config;
 
+import com.example.demo.service.impl.FacebookConnectionSignUp;
+import net.sourceforge.htmlunit.corejs.javascript.tools.shell.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -10,18 +14,60 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.UsersConnectionRepository;
+import org.springframework.social.connect.mem.InMemoryUsersConnectionRepository;
+import org.springframework.social.connect.support.ConnectionFactoryRegistry;
+import org.springframework.social.connect.web.ProviderSignInController;
+import org.springframework.social.facebook.connect.FacebookConnectionFactory;
+
+import javax.inject.Inject;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  //  @Autowired
- //   private UserDetailsService userDetailsService;
-
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     private final PasswordEncoder passwordEncoder;
     private final CustomUsernamePasswordAuthenticationProvider customUsernamePasswordAuthenticationProvider;
+    @Autowired
+    private FacebookConnectionSignUp facebookConnectionSignup;
+
+    @Value("${spring.social.facebook.appSecret}")
+    String appSecret;
+
+    @Value("${spring.social.facebook.appId}")
+    String appId;
+
+    @Bean
+    public ProviderSignInController providerSignInController() {
+        ConnectionFactoryLocator connectionFactoryLocator =
+                connectionFactoryLocator();
+        UsersConnectionRepository usersConnectionRepository =
+                getUsersConnectionRepository(connectionFactoryLocator);
+        ((InMemoryUsersConnectionRepository) usersConnectionRepository)
+                .setConnectionSignUp(facebookConnectionSignup);
+        return new ProviderSignInController(connectionFactoryLocator,
+                usersConnectionRepository, new FacebookSignInAdapter());
+    }
+
+    private ConnectionFactoryLocator connectionFactoryLocator() {
+        ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();
+        registry.addConnectionFactory(new FacebookConnectionFactory(appId, appSecret));
+        return registry;
+    }
+    private UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator
+                                                                           connectionFactoryLocator) {
+        return new InMemoryUsersConnectionRepository(connectionFactoryLocator);
+    }
+
+
+
+
+
 
     public SecurityConfig(PasswordEncoder passwordEncoder, CustomUsernamePasswordAuthenticationProvider customUsernamePasswordAuthenticationProvider) {
         this.passwordEncoder = passwordEncoder;
@@ -37,7 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
        http.csrf().disable()
                .authorizeRequests()
-               .antMatchers("/home", "/assets/**", "/register",  "/api/**","/header.html","/footer.html").permitAll()//koi stranici na koi url treba da bidat dozvoleni od korisnici
+               .antMatchers("/home", "/assets/**", "/register",  "/signin/**","/signup/**","/api/**","/header.html","/footer.html","/login").permitAll()//koi stranici na koi url treba da bidat dozvoleni od korisnici
                //.antMatchers("/admin/**").hasRole("ADMIN")//stranici dozvoleni samo za korisnici so uloga administrator
                //.anyRequest()
               // .authenticated()
@@ -60,9 +106,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-     // auth.userDetailsService(this.userDetailsService);;
-      //  auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("admin")).authorities("ROLE_ADMIN")
-                //.and().withUser("user").password(passwordEncoder.encode("user")).authorities("ROLE_USER");
+     auth.userDetailsService(userDetailsService);
         auth.authenticationProvider(customUsernamePasswordAuthenticationProvider);
     }
 }

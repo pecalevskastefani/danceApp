@@ -48,12 +48,6 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public void deleteById(Long id) {
-       /* Collection<Favorites> favorites = this.favoritesRepository.findAll();
-        Collection<Video> videos = new ArrayList<>();
-        for(Favorites f:favorites){
-            videos = f.getVideos();
-        }
-        videos.removeIf(i->i.getId().equals(id));*/
         List<Favorites> favorites = this.favoritesRepository.findAll();
         List<Video> videos = new ArrayList<>();
         for(Favorites f:favorites){
@@ -63,7 +57,6 @@ public class VideoServiceImpl implements VideoService {
                     break;
                 }
         }
-        //this.favoritesRepository.deleteById(id);
         this.videoRepository.deleteById(id);
     }
 
@@ -87,7 +80,9 @@ public class VideoServiceImpl implements VideoService {
     }
     @Override
     public List<Video> filter(String title, Long categoryId) {
+        title= title.toLowerCase();
         String title1 = '%' + title + '%';
+        title1 = title1.toLowerCase();
         Category cat = categoryId != null ? this.categoryRepository.findById(categoryId).orElse((Category)null):null;
         if(title!=null && categoryId!=null){
             return this.videoRepository.findAllByTitleLikeAndAndCategory(title1,cat);

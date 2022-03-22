@@ -1,0 +1,11 @@
+<html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav>
+    <p style="display: none" sec:authentication="name">Username</p>
+</nav>
+
+<h1>Welcome, <span sec:authentication="name">Username</span></h1>
+<p style="display: none" sec:authentication="authorities">User authorities</p>
+<a href="/home">Get back to the application</a>
+</body>
+</html>
