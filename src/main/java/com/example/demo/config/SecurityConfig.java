@@ -42,16 +42,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.social.facebook.appId}")
     String appId;
 
+    //so providerSignInController dozvolvuame da se logiraat preku fb
     @Bean
     public ProviderSignInController providerSignInController() {
-        ConnectionFactoryLocator connectionFactoryLocator =
+        ConnectionFactoryLocator connectionFactoryLocator = //vo ova imame parametri, klinetot so ova vospostavuva vrska
                 connectionFactoryLocator();
         UsersConnectionRepository usersConnectionRepository =
-                getUsersConnectionRepository(connectionFactoryLocator);
-        ((InMemoryUsersConnectionRepository) usersConnectionRepository)
-                .setConnectionSignUp(facebookConnectionSignup);
-        return new ProviderSignInController(connectionFactoryLocator,
-                usersConnectionRepository, new FacebookSignInAdapter());
+                getUsersConnectionRepository(connectionFactoryLocator); //za userot se pravi userconnectionrepository
+        ((InMemoryUsersConnectionRepository) usersConnectionRepository)////zacuvua vo memorija konekcija na korisnik
+                .setConnectionSignUp(facebookConnectionSignup);//za tie so prv pat se logiraat
+        return new ProviderSignInController(connectionFactoryLocator, //so ovoj provider se pravi post baranje do signin/facebook
+                usersConnectionRepository, new FacebookSignInAdapter()); //sign in adapterot ja pravi login logikata vo nasata app
     }
 
     private ConnectionFactoryLocator connectionFactoryLocator() {
@@ -63,10 +64,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                                                            connectionFactoryLocator) {
         return new InMemoryUsersConnectionRepository(connectionFactoryLocator);
     }
-
-
-
-
 
 
     public SecurityConfig(PasswordEncoder passwordEncoder, CustomUsernamePasswordAuthenticationProvider customUsernamePasswordAuthenticationProvider) {

@@ -9,6 +9,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 
 import java.util.Arrays;
 
+//koga ke se logiraat so fb site ovie useri ke imaat role= facebook_user
 public class FacebookSignInAdapter implements SignInAdapter {
     @Override
     public String signIn(
@@ -19,8 +20,7 @@ public class FacebookSignInAdapter implements SignInAdapter {
         SecurityContextHolder.getContext().setAuthentication(
                 new UsernamePasswordAuthenticationToken(
                         connection.getDisplayName(), null,
-                        Arrays.asList(new SimpleGrantedAuthority("FACEBOOK_USER"))));
-
+                        Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))));
         return null;
     }
 }

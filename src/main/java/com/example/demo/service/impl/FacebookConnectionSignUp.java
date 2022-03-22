@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
+//koga prv pat se avtenticiraat so fb nemaat tie acc vo nasata aplikacija. I ovde go kreirame userot
 @Service
 public class FacebookConnectionSignUp implements ConnectionSignUp {
 
