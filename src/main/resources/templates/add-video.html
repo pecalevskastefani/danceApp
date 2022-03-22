@@ -16,7 +16,7 @@
     }
     div .text-center:first-of-type{
         padding-top: -3px;
-        background-image: url("/images/DSC_9865.jpg");
+        background-image: url("../static/images/DSC_9865.jpg");
         max-height: 100%;
         background-size: cover;
         background-repeat: no-repeat;
@@ -47,24 +47,37 @@
         text-align: center;
         display: block;
     }
-    .form{
-        border: 2px solid #f6f490;
+    .form, #url{
+        border: 2px solid #f7653b;
         border-radius: 15px 15px 15px 15px;
         margin: 0 auto;
         width: 400px;
     }
     .btn-primary{
-        color: #f6f490;
-        background-color: #087b7e;
+        color: #ffffff;
+        background-color: #f7653b;
         border: 3px solid #ffffff;
         font-weight: 600;
         border-radius: 7px;
         width: 150px;
     }
     .btn-primary:hover {
-        color: #087b7e;
+        color: #f7653b;
         background-color: #ffffff;
-        border-color: #087b7e;
+        border-color: #f7653b;
+    }
+    #back-button{
+        color: #007bff;
+        background-color: #ffffff;
+        border: 3px solid #007bff;
+        font-weight: 600;
+        border-radius: 7px;
+        width: 150px;
+    }
+    #back-button:hover {
+        color: #ffffff;
+        background-color: #007bff;
+        border-color: #ffffff;
     }
     .form-video {
         border: 2px solid #f6f490;
@@ -72,15 +85,17 @@
         margin: 0 auto;
         width: 600px;
     }
-
+    label{
+        color: #f7653b;
+    }
 </style>
 </head>
 <body>
 <div xmlns:th="http://www.thymeleaf.org" >
     <div class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">GROOVE AND GO</h1>
-            <h3 class="jumbotron-heading"></h3>
+            <h1 class="jumbotron-heading">CATALOG</h1>
+            <small class="jumbotron-heading" style="color: white">Groove and Go</small>
         </div>
     </div>
 
@@ -153,7 +168,9 @@
                     </div>
                     <div class="text-center">
                         <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-                        <a type="button" class="btn btn-primary" href="/catalog">Back</a>
+                        <br>
+                        <br>
+                        <a id="back-button" type="button" class="btn btn-primary" href="/catalog">Back</a>
                     </div>
                 </form>
             </div>

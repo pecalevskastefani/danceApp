@@ -8,6 +8,19 @@ div .text-center:first-of-type{
     background-attachment: fixed;
 
 }
+#back-button{
+    color: #007bff;
+    background-color: #ffffff;
+    border: 3px solid #007bff;
+    font-weight: 600;
+    border-radius: 7px;
+    width: 150px;
+}
+#back-button:hover {
+    color: #ffffff;
+    background-color: #007bff;
+    border-color: #ffffff;
+}
 .jumbotron-heading{
     font-weight: 600;
     color: #f6ff68;

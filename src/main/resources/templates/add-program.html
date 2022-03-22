@@ -12,15 +12,13 @@
         background-repeat: no-repeat;
         background-position: center center;
         background-attachment: fixed;
-
     }
-
     .jumbotron{
         opacity: 1;
     }
     .jumbotron-heading{
         font-weight: 600;
-        color: #f9ff9c;
+        color: #f6ff68;
     }
     .form-group{
         font-size: 20px;
@@ -34,96 +32,112 @@
         text-align: center;
         display: block;
     }
-    .form{
-        border: 2px solid #f6f490;
+    .form, #url{
+        border: 2px solid #f7653b;
         border-radius: 15px 15px 15px 15px;
         margin: 0 auto;
         width: 400px;
     }
     .btn-primary{
-        color: #f6f490;
-        background-color: #087b7e;
+        color: #ffffff;
+        background-color: #f7653b;
         border: 3px solid #ffffff;
         font-weight: 600;
         border-radius: 7px;
         width: 150px;
     }
     .btn-primary:hover {
-        color: #087b7e;
+        color: #f7653b;
         background-color: #ffffff;
-        border-color: #087b7e;
+        border-color: #f7653b;
     }
-    .form-program {
-        border: 2px solid #f6f490;
-        border-radius: 15px 15px 15px 15px;
-        margin: 0 auto;
-        width: 600px;
+    #back-button{
+        color: #007bff;
+        background-color: #ffffff;
+        border: 3px solid #007bff;
+        font-weight: 600;
+        border-radius: 7px;
+        width: 150px;
     }
-
+    #back-button:hover {
+        color: #ffffff;
+        background-color: #007bff;
+        border-color: #ffffff;
+    }
+    label{
+        color: #f7653b;
+    }
+    small{
+        font-weight: 700;
+    }
+    .container{
+        margin: auto;
+    }
 </style>
 
 <body>
 <div xmlns:th="http://www.thymeleaf.org">
     <div class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">GROOVE AND GO</h1>
-            <h3 class="jumbotron-heading"></h3>
+            <h1 class="jumbotron-heading">PROGRAMS</h1>
+            <small class="jumbotron-heading" style="color: white">Groove and Go</small>
         </div>
     </div>
 
-
+<div id="div" class="jumbotron text-center">
     <div class="container">
-        <div class="row">
-            <div class="center">
-                <form action="/programs/add" method="POST">
-                    <input id="id" type="hidden" name="id" th:value="(${program} != null ? ${program.getId()} : '')">
-                    <div class="form-group">
-                        <label for="name">Program name</label>
-                        <input type="text"
-                               class="form"
-                               id="name"
-                               name="name"
-                               th:value="(${program} != null ? ${program.getName()} : '')"
-                               required
-                               placeholder="Enter program name">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text"
-                               class="form"
-                               id="description"
-                               name="description"
-                               th:value="(${program} != null ? ${program.getDescription()} : '')"
-                               placeholder="Description">
-                    </div>
+        <div>
+            <form action="/programs/add" method="POST">
+                <input id="id" type="hidden" name="id" th:value="(${program} != null ? ${program.getId()} : '')">
+                <div class="form-group">
+                    <label for="name">Program name</label>
+                    <input type="text"
+                           class="form"
+                           id="name"
+                           name="name"
+                           th:value="(${program} != null ? ${program.getName()} : '')"
+                           required
+                           placeholder="Enter program name">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text"
+                           class="form"
+                           id="description"
+                           name="description"
+                           th:value="(${program} != null ? ${program.getDescription()} : '')"
+                           placeholder="Description">
+                </div>
 
-                    <div class="form-group">
-                        <label for="price">Price</label>
-                        <input type="text"
-                               class="form"
-                               id="price"
-                               name="price"
-                               th:value="(${program} != null ? ${program.getPrice()} : '')"
-                               placeholder="Price">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Video url</label>
-                        <input type="text"
-                               class="form-program"
-                               id="url"
-                               name="url"
-                               th:value="(${program} != null ? ${program.getUrl()} : '')"
-                               placeholder="Url">
-                    </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text"
+                           class="form"
+                           id="price"
+                           name="price"
+                           th:value="(${program} != null ? ${program.getPrice()} : '')"
+                           placeholder="Price">
+                </div>
+                <div class="form-group">
+                    <label for="description">Video url</label>
+                    <input type="text"
+                           class="form-program"
+                           id="url"
+                           name="url"
+                           th:value="(${program} != null ? ${program.getUrl()} : '')"
+                           placeholder="Url">
+                </div>
 
-                    <div class="text-center">
-                        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-                        <a type="button" class="btn btn-primary" href="/programs">Back</a>
-                    </div>
-                </form>
-            </div>
+                <div class="text-center">
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                    <br>
+                    <br>
+                    <a id="back-button" type="button" class="btn btn-primary" href="/programs">Back</a>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 
 </body>

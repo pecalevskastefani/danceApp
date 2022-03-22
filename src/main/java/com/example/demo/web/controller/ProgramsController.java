@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -66,11 +67,13 @@ public class ProgramsController {
             @RequestParam String name,
             @RequestParam String description,
             @RequestParam Double price,
-            @RequestParam String url,  @RequestParam List<User> users) {
+            @RequestParam String url,
+            @RequestParam(required = false) List<User> users) {
         if (id != null) {
             this.programsService.update(id,name,description,price,users);
         } else {
-            this.programsService.save(name,description,price,url,users);
+            List<User> emptyUsers = new ArrayList<>();
+            this.programsService.save(name,description,price,url,emptyUsers);
         }
         return "redirect:/programs";
     }

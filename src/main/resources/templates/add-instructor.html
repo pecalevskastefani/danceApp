@@ -3,14 +3,92 @@
     <meta charset="UTF-8">
     <title>Add instructor</title>
     <link href="header.css" rel="stylesheet">
-
 </head>
+<style>
+    div .text-center:first-of-type{
+        padding-top: -3px;
+        background-image: url("../static/images/DSC_9865.jpg");
+        max-height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+    .jumbotron{
+        opacity: 1;
+    }
+    .jumbotron-heading{
+        font-weight: 600;
+        color: #f6ff68;
+    }
+    .form-group{
+        font-size: 20px;
+        text-align: center;
+        display: block;
+        color: dimgrey;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    input,select {
+        text-align: center;
+        display: block;
+    }
+    .form-control, #url{
+        border: 2px solid #f7653b;
+        border-radius: 15px 15px 15px 15px;
+        margin: 0 auto;
+        width: 400px;
+    }
+    .btn-primary{
+        color: #ffffff;
+        background-color: #f7653b;
+        border: 3px solid #ffffff;
+        font-weight: 600;
+        border-radius: 7px;
+        width: 150px;
+    }
+    .btn-primary:hover {
+        color: #f7653b;
+        background-color: #ffffff;
+        border-color: #f7653b;
+    }
+    #back-button{
+        color: #007bff;
+        background-color: #ffffff;
+        border: 3px solid #007bff;
+        font-weight: 600;
+        border-radius: 7px;
+        width: 150px;
+    }
+    #back-button:hover {
+        color: #ffffff;
+        background-color: #007bff;
+        border-color: #ffffff;
+    }
+    label{
+        color: #f7653b;
+    }
+    small{
+        font-weight: 700;
+    }
+    .container{
+        margin: auto;
+    }
+</style>
+<body>
 
 <div xmlns:th="http://www.thymeleaf.org">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">INSTRUCTORS</h1>
+            <small class="jumbotron-heading" style="color: white">Groove and Go</small>
+        </div>
+    </div>
+
+    <div id="div" class="jumbotron text-center">
+        <div class="container">
+            <div>
                 <form action="/instructors/add" method="POST">
                     <input id="id" type="hidden" name="id" th:value="(${instructor} != null ? ${instructor.getId()} : '')">
                     <div class="form-group">
@@ -54,10 +132,13 @@
                     </div>
 
                     <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-                    <a type="button" class="btn btn-primary" href="/instructors">Back</a>
+                    <br>
+                    <br>
+                    <a type="button" id="back-button" class="btn btn-primary" href="/instructors">Back</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
+</body>
