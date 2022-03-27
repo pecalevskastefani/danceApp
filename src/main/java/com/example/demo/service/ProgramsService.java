@@ -12,5 +12,5 @@ public interface ProgramsService {
     Program save(String name, String description, Double price, String url, List<User> users);
     void deleteById(Long id);
     Program update(Long id, String name, String description, Double price,List<User> users);
-   void addUserToProgram(Long programId,String username);
+    void addUserToProgram(Long programId,String username);
 }

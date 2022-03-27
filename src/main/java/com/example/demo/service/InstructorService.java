@@ -13,5 +13,4 @@ public interface InstructorService {
     void deleteById(Long id);
     void update(Long id, String name, String surname, List<Skills> skills, String url);
     Optional<Instructor> assignSkill(Long instructorId, List<Skills> skills);
-
 }

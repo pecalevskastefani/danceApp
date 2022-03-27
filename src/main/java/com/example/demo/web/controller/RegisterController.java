@@ -27,7 +27,6 @@ public class RegisterController {
         return "master-template";
     }
 
-
     @PostMapping("/register")
     public String register(@RequestParam String name,
                            @RequestParam String surname,

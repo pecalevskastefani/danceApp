@@ -85,6 +85,4 @@ public class ProgramsController {
         this.programsService.addUserToProgram(id,username);
         return "redirect:/programs";
     }
-
-
 }

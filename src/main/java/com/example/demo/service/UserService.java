@@ -13,5 +13,4 @@ public interface UserService extends UserDetailsService {
     User create(String email,String password, String name,String surname, Role role, LocalDate birthday);
     List<User> findAll();
     User findByUsername(String email);
-
 }

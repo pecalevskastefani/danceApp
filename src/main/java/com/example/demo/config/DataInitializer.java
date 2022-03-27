@@ -67,24 +67,25 @@ public class DataInitializer {
 
 
         //VIDEA
-        this.videoService.create("justin bieber - baby","Koreografija na ana",
+        this.videoService.create("Baby - Justin Bieber","Description",
                 cateogries.get(5), coaches.get(0),
                 "images/video4.jpg");
-        this.videoService.create("50 cent - in da club","Koreografija na stefi",
-                cateogries.get(0), coaches.get(0), "images/video1.jpg");
-        this.videoService.create("koffee - rapture","Koreografija na jovana",
-                cateogries.get(3), coaches.get(0),
+        this.videoService.create("Moonlight - Xxxtentacion","Description",
+                cateogries.get(0), coaches.get(1), "images/video1.jpg");
+        this.videoService.create("Koffee - Rapture","Description",
+                cateogries.get(3), coaches.get(2),
                 "images/video5.jpg");
-        this.videoService.create("ariana grande - monster","Koreografija na stefi",
+        this.videoService.create("Flo Rida - Low","Description",
                 cateogries.get(0), coaches.get(0),
                 "images/video2.jpg");
 
-        this.videoService.create("balet - baletska pesna","Koreografija na ana",
+        this.videoService.create("Lovely - Billie Eilish, Khalid","Description",
                 cateogries.get(4), coaches.get(1),
                 "images/video3.jpg");
 
-        this.videoService.create("jazz - jazz pesna","Koreografija na jovana",
+        this.videoService.create("Confident - Demi Lovato","Description",
                 cateogries.get(1), coaches.get(2), "images/video6.jpg");
+
 
         for (int i = 1; i < 11; i++) {
             this.userService.create(
