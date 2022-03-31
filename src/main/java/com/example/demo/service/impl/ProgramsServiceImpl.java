@@ -8,6 +8,7 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.service.ProgramsService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,9 +32,9 @@ public class ProgramsServiceImpl implements ProgramsService{
     }
 
     @Override
-    public Program save(String name, String description, Double price, String url,List<User> users) {
+    public Program save(String name, String description, Double price, String url) {
         return this.programsRepository.save(
-                new Program(name, description, price, url,users)
+                new Program(name, description, price, url)
         );
     }
 
@@ -43,20 +44,33 @@ public class ProgramsServiceImpl implements ProgramsService{
     }
 
     @Override
-    public Program update(Long id, String name, String description, Double price,List<User> users) {
+    public Program update(Long id, String name, String description, Double price) {
         Program program = this.findById(id);
         program.setName(name);
         program.setDescription(description);
         program.setPrice(price);
-        program.setUsers(users);
+       // program.setUsers(users);
         return this.programsRepository.save(program);
     }
+   // @Override
+    //public void addUserToProgram(Long programId,String username) {
+      //  User user = this.userRepository.findByUsername(username);
+        //Program program = this.findById(programId);
+        //user.setProgram(program);
+
+    //}
+
 
     @Override
-    public void addUserToProgram(Long programId,String username) {
-        User user = this.userRepository.findByUsername(username);
-        Program program = this.findById(programId);
-        program.getUsers().add(user);
-
+    public List<User> listUsersInProgram(Long programId) {
+        Program program=this.findById(programId);
+        List<User> users= this.userRepository.findAll();
+        List<User> usersInProgram = new ArrayList<>();
+        for(User u:users){
+            if(u.getProgram()!=null && u.getProgram().getName().equals(program.getName())){
+                usersInProgram.add(u);
+            }
+        }
+        return usersInProgram;
     }
 }

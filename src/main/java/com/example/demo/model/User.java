@@ -21,6 +21,8 @@ public class User implements UserDetails
     String password;
 
     LocalDate birthday;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Program program;
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
@@ -30,13 +32,14 @@ public class User implements UserDetails
     private boolean isEnabled = true;
     public User() {
     }
-    public User(String name, String surname, String username, String password, Role role, LocalDate birthday) {
+    public User(String name, String surname, String username, String password, Role role, LocalDate birthday,Program program) {
         this.name = name;
         this.surname = surname;
         this.username=username;
         this.password = password;
         this.role = role;
         this.birthday = birthday;
+       this.program=program;
     }
 
     @Override

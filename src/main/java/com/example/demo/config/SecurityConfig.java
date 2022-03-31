@@ -74,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/h2**"); // do not remove this line
-       //web.ignoring().antMatchers("/**");
+        // web.ignoring().antMatchers("/**");
     }
   @Override
     protected void configure(HttpSecurity http) throws Exception {

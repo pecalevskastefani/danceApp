@@ -98,8 +98,8 @@ public class DataInitializer {
             );
         }
 
-        this.programsService.save("Monthly Plan", "For $14.99 per month ($179.99 paid yearly) you get 24/7 access to all G&G content.",14.99, "https://alpha.uscreencdn.com/images/offer/36783/big_12796_2Foffer_image_2F70csReQZRLihJZ3OkTj5_Payment_20Thumbnails_20-_20MONTHLY.jpg",new ArrayList<User>());
-        this.programsService.save("3 Month Plan", "For $11.99 per month ($143.99 paid yearly) you get 24/7 access to all G&G content.",11.99, "https://alpha.uscreencdn.com/images/offer/59916/big_Payment_Plan_-_3_Months_v2.1629129860.jpeg",new ArrayList<User>());
-        this.programsService.save("Annual Plan", "For $5.83 per month ($69.99 paid yearly) you get 24/7 access to all G&G content.",5.83, "https://alpha.uscreencdn.com/images/offer/35765/big_Payment_Plan_-_Yearly_v2.1629129904.jpeg",new ArrayList<User>());
+        this.programsService.save("Monthly Plan", "For $14.99 per month ($179.99 paid yearly) you get 24/7 access to all G&G content.",14.99, "https://alpha.uscreencdn.com/images/offer/36783/big_12796_2Foffer_image_2F70csReQZRLihJZ3OkTj5_Payment_20Thumbnails_20-_20MONTHLY.jpg");
+        this.programsService.save("3 Month Plan", "For $11.99 per month ($143.99 paid yearly) you get 24/7 access to all G&G content.",11.99, "https://alpha.uscreencdn.com/images/offer/59916/big_Payment_Plan_-_3_Months_v2.1629129860.jpeg");
+        this.programsService.save("Annual Plan", "For $5.83 per month ($69.99 paid yearly) you get 24/7 access to all G&G content.",5.83, "https://alpha.uscreencdn.com/images/offer/35765/big_Payment_Plan_-_Yearly_v2.1629129904.jpeg");
     }
 }

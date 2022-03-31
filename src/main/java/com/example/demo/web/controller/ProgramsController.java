@@ -2,6 +2,7 @@ package com.example.demo.web.controller;
 
 import com.example.demo.model.*;
 import com.example.demo.service.ProgramsService;
+import com.example.demo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,11 @@ import java.util.List;
 @Controller
 public class ProgramsController {
     private final ProgramsService programsService;
+    private final UserService userService;
 
-    public ProgramsController(ProgramsService programsService) {
+    public ProgramsController(ProgramsService programsService, UserService userService) {
         this.programsService = programsService;
+        this.userService = userService;
     }
 
     @GetMapping("/programs")
@@ -67,22 +70,29 @@ public class ProgramsController {
             @RequestParam String name,
             @RequestParam String description,
             @RequestParam Double price,
-            @RequestParam String url,
-            @RequestParam(required = false) List<User> users) {
+            @RequestParam String url) {
+        //@RequestParam(required = false) List<User> users
         if (id != null) {
-            this.programsService.update(id,name,description,price,users);
+            this.programsService.update(id,name,description,price);
         } else {
-            List<User> emptyUsers = new ArrayList<>();
-            this.programsService.save(name,description,price,url,emptyUsers);
+        //    List<User> emptyUsers = new ArrayList<>();
+            this.programsService.save(name,description,price,url);
         }
         return "redirect:/programs";
     }
 
     @GetMapping("/programs/apply/{id}")
     public String applyToProgram(HttpServletRequest request,
-            @PathVariable Long id) {
+                                 @PathVariable Long id) {
         String username = request.getRemoteUser();
-        this.programsService.addUserToProgram(id,username);
+        this.userService.addUserToProgram(id,username);
         return "redirect:/programs";
+    }
+    @GetMapping("/programs/usersInProgram/{id}")
+    public String applyToProgram(Model model,
+                                 @PathVariable Long id) {
+       model.addAttribute("program",this.programsService.findById(id));
+       model.addAttribute("users",this.programsService.listUsersInProgram(id));
+        return "users-in-program";
     }
 }

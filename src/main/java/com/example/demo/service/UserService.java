@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Program;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,4 +14,5 @@ public interface UserService extends UserDetailsService {
     User create(String email,String password, String name,String surname, Role role, LocalDate birthday);
     List<User> findAll();
     User findByUsername(String email);
+    void addUserToProgram(Long programId,String username);
 }

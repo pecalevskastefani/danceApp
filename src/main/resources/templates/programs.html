@@ -55,6 +55,13 @@
                                     <a th:href="@{'/programs/apply/{id}' (id=${p.getId()})}"
                                        class="btn btn-sm btn-warning">
                                         <i class="fa fa-trash " role="alert" onclick="alert('Congratulations! You applied successfully to this program');" >Apply</i>
+
+                                    </a>
+                                </th:block>
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <a th:href="@{'/programs/usersInProgram/{id}' (id=${p.getId()})}"
+                                       class="btn btn-sm btn-warning edit-product">
+                                        <i class="fa fa-trash">View Users</i>
                                     </a>
                                 </th:block>
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">

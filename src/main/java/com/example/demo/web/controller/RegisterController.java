@@ -1,5 +1,6 @@
 package com.example.demo.web.controller;
 
+import com.example.demo.model.Program;
 import com.example.demo.model.Role;
 import com.example.demo.model.exceptions.InvalidArgumentsException;
 import com.example.demo.model.exceptions.PasswordsDoNotMatchException;

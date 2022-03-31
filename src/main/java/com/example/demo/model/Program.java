@@ -17,19 +17,18 @@ public class Program {
     String description;
     Double price;
     String url;
-    @OneToMany
-    List<User> users = new ArrayList<>();
+   // @OneToMany(mappedBy = "program",cascade = CascadeType.ALL)
+    //List<User> users = new ArrayList<>();
 
     public Program(){
 
     }
-
-    public Program(String name, String description, Double price, String url, List<User>users) {
+    public Program(String name, String description, Double price, String url) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.url = url;
-        this.users=new ArrayList<>();
+       // this.users=new ArrayList<>();
     }
 
 }
