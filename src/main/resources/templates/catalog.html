@@ -5,7 +5,7 @@
     <link href="header.css" rel="stylesheet">
     <link href="catalog.css" rel="stylesheet">
     <script>
-                $(document).ready(function () {$("p").hide();
+        $(document).ready(function () {$("p").hide();
             $('.card-img-top').hover(function(){
                 $(this).css("opacity","1");
                 $(this).siblings().find('p').show();
@@ -14,12 +14,23 @@
                 $(this).siblings().find('p').hide();
 
             });
-            });
+            })
+    </script>
+    <script>
+        function pageRedirect(atr) {
+            if(atr=="#"){
+                window.location.href = 'https://www.youtube.com/watch?v=TmnCxRFGQu8';
+            }
+            else if(atr=="/") {
+                alert("Apply to a program if you want access to this video")
+            }
+        }
     </script>
 
 
 </head>
 <div xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  >
+
     <div class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">CATALOG</h1>
@@ -52,9 +63,10 @@
 
                 <div th:each="video : ${videos}" style="width:415px;" class="col-4">
                     <div class="card-group" >
-                        <div class="card">
-                            <img  class="card-img-top" th:src="${video.getUrl()}"
-                                  alt="#" height="255px" width="720px" style="border-radius: 8px">
+                        <div class="card" >
+                            <img alt="#" class="card-img-top" height="255px" th:id="${session.program!=null} ? '#':'/'"
+                                 style="border-radius: 8px" onclick="pageRedirect(this.getAttribute('id'))"
+                                 th:src="${video.getUrl()}" width="720px">
                             <br>
                             <h5  class="card-title w3-cursive" th:text="${video.getTitle()}"></h5>
                             <div class="card-body">

@@ -1,11 +1,10 @@
 package com.example.demo.web.controller;
 
-import com.example.demo.model.Category;
 import com.example.demo.model.Instructor;
-import com.example.demo.model.Program;
 import com.example.demo.model.Skills;
 import com.example.demo.service.InstructorService;
 import com.example.demo.service.SkillsService;
+import com.example.demo.service.VideoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,16 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class InstructorController {
     private final InstructorService instructorService;
     private final SkillsService skillsService;
-    public InstructorController(InstructorService instructorService, SkillsService skillsService) {
+    private final VideoService videoService;
+    public InstructorController(InstructorService instructorService, SkillsService skillsService, VideoService videoService) {
         this.instructorService = instructorService;
         this.skillsService = skillsService;
+        this.videoService = videoService;
     }
 
     @GetMapping("/instructors")
@@ -91,5 +91,14 @@ public class InstructorController {
             @RequestParam List<Skills> skills) {
         this.instructorService.assignSkill(id,skills);
         return "redirect:/instructors";
+    }
+    @GetMapping("/instructor/details")
+    public String getInstructorDetails(@RequestParam(required = false) Long id,Model model){
+        Instructor instructor = this.instructorService.findById(id);
+        String url = instructor.getUrl();
+        model.addAttribute("instructor",instructor);
+        model.addAttribute("bodyContent", "instructor-details");
+        model.addAttribute("videos",this.videoService.findAllByInstructor(instructor));
+        return "master-template";
     }
 }

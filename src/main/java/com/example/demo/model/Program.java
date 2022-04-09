@@ -3,6 +3,8 @@ package com.example.demo.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +19,10 @@ public class Program {
     String description;
     Double price;
     String url;
-   // @OneToMany(mappedBy = "program",cascade = CascadeType.ALL)
-    //List<User> users = new ArrayList<>();
+    @OneToMany(mappedBy = "program",cascade = CascadeType.ALL)
+    List<User> users = new ArrayList<>();
+    LocalDateTime start;
+    LocalDateTime end;
 
     public Program(){
 
@@ -28,7 +32,9 @@ public class Program {
         this.description = description;
         this.price = price;
         this.url = url;
-       // this.users=new ArrayList<>();
+       this.users=new ArrayList<>();
+       this.start = LocalDateTime.now();
+       this.end = LocalDateTime.now();
     }
 
 }

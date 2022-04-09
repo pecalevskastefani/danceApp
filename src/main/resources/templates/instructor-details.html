@@ -1,0 +1,76 @@
+<head>
+    <link href="header.css" rel="stylesheet">
+    <link href="catalog.css" rel="stylesheet">
+    <style>
+        img{
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function pageRedirect(atr) {
+            if(atr=="#"){
+                window.location.href = 'https://www.youtube.com/watch?v=TmnCxRFGQu8';
+            }
+            else if(atr=="/") {
+                alert("Apply to a program if you want access to this video")
+            }
+        }
+    </script>
+</head>
+<div  xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+        <div>
+            <h1 class="text-center">Instructor: <span th:text="${instructor.name}"></span> </h1>
+        </div>
+            <div class="container">
+                <div class="row">
+                <div class="col-4">
+                    <div>
+                        <img th:src="'/'+${instructor.getUrl()}" height="250px" width="250px"/>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <h4>Details:</h4>
+                    <div> Name: <span th:text="${instructor.name}"></span></div>
+                    <div> Surname: <span th:text="${instructor.surname}"></span></div>
+                    <div>
+                        <div name="skills" >
+                            Skills:
+                            <span th:each="s : ${instructor.skills}"
+                                    th:value="${s.getId()}"
+                                    th:text="${s.getName()} + ' ' ">
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            </br>
+                <h2 class="text-center">Videos of <span th:text="${instructor.getName()}"></span></h2>
+                <div class="wrapper row" th:if="${videos.size() > 0}">
+            <div th:each="video : ${videos}" style="width:415px;" class="col-4">
+                <div class="card-group " >
+                    <div class="card" >
+                        <img alt="#" class="card-img-top" height="255px" th:id="${session.program!=null} ? '#':'/'"
+                             style="border-radius: 8px" onclick="pageRedirect(this.getAttribute('id'))"
+                             th:src="'/'+ ${video.getUrl()}" width="720px">
+                        <br>
+                        <h5  class="card-title w3-cursive" th:text="${video.getTitle()}"></h5>
+                        <div class="card-body">
+                            <div class="info-video" >
+
+                                <p class="card-text"  th:text="${video.getDescription()}"></p>
+                                <p class="card-text"  th:text="${video.getInstructor() != null}
+                            ? ${video.getInstructor().getName()} : 'No Instructor'"></p>
+                                <p class="card-text"th:text="${video.getCategory() != null}
+                            ? ${video.getCategory().getName()} : 'No Category'"></p>
+                                <p class="card-text"><small class="text-muted"></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+                </div>
+
+</div>

@@ -20,13 +20,17 @@ import org.springframework.social.connect.mem.InMemoryUsersConnectionRepository;
 import org.springframework.social.connect.support.ConnectionFactoryRegistry;
 import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.inject.Inject;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -106,4 +110,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      auth.userDetailsService(userDetailsService);
         auth.authenticationProvider(customUsernamePasswordAuthenticationProvider);
     }
+
 }

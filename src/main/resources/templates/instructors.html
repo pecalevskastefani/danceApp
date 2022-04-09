@@ -21,6 +21,11 @@
         });
     });
 </script>
+<script>
+    function pageRedirect(id) {
+        window.location.href = '/instructor/details/?id='+id ;
+    }
+</script>
 <div xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <div class="jumbotron text-center">
         <div class="container">
@@ -38,10 +43,10 @@
             <div class="wrapper row" th:if="${instructors.size() > 0}">
             <div th:each="i : ${instructors}" class="col-4" >
                 <div class="card-group" >
-
                     <div class="card">
                         <img class="card-img-top image" th:src="${i.getUrl()}"
-                              height="400px" width="330px" style="position: relative; cursor: pointer" >
+                             height="400px" width="330px" style="position: relative; cursor: pointer" th:id="${i.getId()}"
+                             onclick="pageRedirect(this.getAttribute('id'))">
                         <div class="card-body" style=" position:absolute; cursor: pointer">
                             <div class="info-instructor" >
                                 <p  style="font-size: 25px" class="card-title" th:text="${i.getName()} + '   ' + ${i.getSurname()}"></p>

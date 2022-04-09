@@ -9,14 +9,12 @@ import com.example.demo.service.UserService;
 import com.example.demo.service.VideoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,14 +23,16 @@ public class CatalogController {
     private final VideoService videoService;
     private final CategoryService categoryService;
     private final InstructorService instructorService;
+    private final UserService userService;
 
 
     public CatalogController(VideoService videoService,
                              CategoryService categoryService,
-                             InstructorService instructorService) {
+                             InstructorService instructorService, UserService userService) {
         this.videoService = videoService;
         this.categoryService = categoryService;
         this.instructorService = instructorService;
+        this.userService = userService;
     }
 
     @GetMapping("/catalog")
@@ -45,7 +45,7 @@ public class CatalogController {
             model.addAttribute("error", error);
         }
         String email = req.getRemoteUser();
-        req.getSession().setAttribute("user",email);
+        req.getSession().setAttribute("program",this.userService.findByUsername(email).getProgram());
         List<Video> videos = new ArrayList<>();
         if(title!=null || category!=null){
             videos= this.videoService.filter(title,category);
@@ -55,6 +55,7 @@ public class CatalogController {
         }
         model.addAttribute("videos",videos);
         model.addAttribute("categories", this.categoryService.listAll());
+        model.addAttribute("user",this.userService.findByUsername(email));
         model.addAttribute("bodyContent", "catalog");
         return "master-template";
     }

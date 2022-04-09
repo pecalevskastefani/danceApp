@@ -75,5 +75,10 @@ public class InstructorServiceImpl implements InstructorService {
        return  Optional.of(this.instructorRepository.save(instructor));
     }
 
+    @Override
+    public Instructor findByName(String name) {
+        return this.instructorRepository.findByName(name);
+    }
+
 
 }

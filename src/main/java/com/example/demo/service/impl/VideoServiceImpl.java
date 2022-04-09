@@ -97,4 +97,9 @@ public class VideoServiceImpl implements VideoService {
             return this.findAll();
         }
     }
+
+    @Override
+    public List<Video> findAllByInstructor(Instructor instructor) {
+        return this.videoRepository.findAllByInstructor(instructor);
+    }
 }

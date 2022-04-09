@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="header.css" rel="stylesheet">
+    <style>
+
+    </style>
 </head>
-<body>
-<h3>Hello, <span th:text="${facebookProfile.name}"></span>!</h3>
-</body>
-</html>
+<div  xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <div>
+        <h3 class="text-center">Hello <span th:text="${user.name}"></span> and welcome to your profile!</h3>
+    </div>
+     <div class="container">
+        <div class="row">
+            <div class="col-4">
+            <div th:if="${user.photos!=null}">
+
+                <img th:src="@{${user.photosImagePath}}" height="250px" width="250px"/>
+            </div>
+                <th:block th:if="${user.photos==null}">
+            <form action="/users/save" method="post"
+                  enctype="multipart/form-data">
+                <div>
+                    <label>Аdd your profile picture </label>
+                    <input type="file" name="image" accept="image/png, image/jpeg" />
+                </div>
+                <input type="submit">
+            </form>
+                </th:block>
+            </div>
+            <div class="col-8">
+            <h4>Details:</h4>
+                <div> Username: <span th:text="${user.username}"></span></div>
+            <div> Name: <span th:text="${user.name}"></span></div>
+            <div> Surname: <span th:text="${user.surname}"></span></div>
+            <div> Birth date: <span th:text="${user.birthday}"></span></div>
+            <div>Program: <span th:text="${user.program != null}
+                            ? ${user.program.name} : 'You still havent applied to any program'"></span>
+                <th:block sec:authorize="hasRole('ROLE_USER')" th:if="${user.program == null}">
+                    <a th:href="@{'/programs'}"
+                       class="btn btn-sm btn-warning">
+                        <i class="fa fa-trash " role="alert">Choose a program</i>
+
+                    </a>
+                </th:block></div>
+
+            </div>
+
+
+        </div>
+        <div th:if="${user.program!=null}">
+            <h4>Program details</h4>
+            <div>Program name: <span th:text="${user.program.name}"></span></div>
+            <div>Program description: <span th:text="${user.program.description}"></span> </div>
+            <div>Program price: <span th:text="${user.program.price}"></span> </div>
+            <div>Applied on date: <span th:text="${user.program.start.toLocalDate()}"></span>
+                and valid until: <span th:text="${user.program.end.toLocalDate()}"></span></div>
+            <div>
+                <th:block>
+                    <a th:href="@{'/cancelProgram'}"
+                       class="btn btn-sm btn-warning">
+                        <i class="fa fa-trash " role="alert">Cancel program</i>
+
+                    </a>
+                </th:block></div>
+            </div>
+        </div>
+    </div>
+</div>

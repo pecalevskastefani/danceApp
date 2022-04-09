@@ -15,4 +15,6 @@ public interface UserService extends UserDetailsService {
     List<User> findAll();
     User findByUsername(String email);
     void addUserToProgram(Long programId,String username);
+    void cancelProgram( User username);
+    User save(User user);
 }

@@ -101,7 +101,16 @@
             <artifactId>spring-social-web</artifactId>
             <version>1.1.6.RELEASE</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.paulcwarren</groupId>
+            <artifactId>spring-content-fs</artifactId>
+            <version>0.0.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.paulcwarren</groupId>
+            <artifactId>spring-content-rest</artifactId>
+            <version>0.0.11</version>
+        </dependency>
 
     </dependencies>
 

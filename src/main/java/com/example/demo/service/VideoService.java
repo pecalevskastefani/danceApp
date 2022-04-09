@@ -13,4 +13,5 @@ public interface VideoService {
     Video create(String title, String description, Category category, Instructor coach,String url);
     Video update(Long id, String title, String description, Long category,Long coach,String url);
     List<Video> filter(String title, Long categoryId);
+    List<Video> findAllByInstructor(Instructor instructor);
 }

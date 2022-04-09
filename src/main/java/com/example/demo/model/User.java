@@ -23,6 +23,14 @@ public class User implements UserDetails
     LocalDate birthday;
     @ManyToOne(cascade = CascadeType.ALL)
     Program program;
+    @Column(nullable = true, length = 64)
+    private String photos;
+    @Transient
+    public String getPhotosImagePath() {
+        if (photos == null || username == null) return null;
+
+        return "/user-photos/" + username + "/" + photos;
+    }
 
     @Enumerated(value = EnumType.STRING)
     private Role role;

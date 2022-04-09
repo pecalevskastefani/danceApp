@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,6 +51,7 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.save(user);
     }
 
+
     @Override
     public List<User> findAll() {
         return this.userRepository.findAll();
@@ -73,8 +75,31 @@ public class UserServiceImpl implements UserService {
     public void addUserToProgram(Long programId,String username) {
         User user = this.findByUsername(username);
         Optional<Program> program = this.programsRepository.findById(programId);
+        program.get().setStart(LocalDateTime.now());
+        if(program.get().getName().equals("Monthly Plan")){
+            program.get().setEnd(LocalDateTime.now().plusMonths(1));
+        }
+        else if(program.get().getName().equals("3 Month Plan")){
+            program.get().setEnd(LocalDateTime.now().plusMonths(3));
+        }
+        else if(program.get().getName().equals("Annual Plan")){
+            program.get().setEnd(LocalDateTime.now().plusMonths(12));
+        }
         user.setProgram(program.get());
+
         this.userRepository.save(user);
+    }
+
+    @Override
+    public void cancelProgram( User username) {
+        Program program = null;
+        username.setProgram(program);
+        this.userRepository.save(username);
+    }
+
+    @Override
+    public User save(User user) {
+        return this.userRepository.save(user);
     }
 
 }
