@@ -105,4 +105,10 @@ public class CatalogController {
         }
         return "redirect:/catalog";
     }
+    @GetMapping("/catalog/video")
+    public String getVideo(Model model){
+
+        model.addAttribute("bodyContent", "video");
+        return "master-template";
+    }
 }

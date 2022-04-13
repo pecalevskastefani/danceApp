@@ -18,12 +18,7 @@
     </script>
     <script>
         function pageRedirect(atr) {
-            if(atr=="#"){
-                window.location.href = 'https://www.youtube.com/watch?v=TmnCxRFGQu8';
-            }
-            else if(atr=="/") {
-                alert("Apply to a program if you want access to this video")
-            }
+                window.location.href = '/catalog/video';
         }
     </script>
 
@@ -64,7 +59,7 @@
                 <div th:each="video : ${videos}" style="width:415px;" class="col-4">
                     <div class="card-group" >
                         <div class="card" >
-                            <img alt="#" class="card-img-top" height="255px" th:id="${session.program!=null} ? '#':'/'"
+                            <img alt="#" class="card-img-top" height="255px" th:id="${session.program!=null} ? '#' :'/'"
                                  style="border-radius: 8px" onclick="pageRedirect(this.getAttribute('id'))"
                                  th:src="${video.getUrl()}" width="720px">
                             <br>

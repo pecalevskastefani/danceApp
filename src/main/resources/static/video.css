@@ -1,0 +1,16 @@
+.blur{
+
+    background-image: url("/images/blur.png");
+    max-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+h3{
+    position: absolute;
+    margin-top: -311px;
+    margin-left: 214px;
+    color: #575656;
+    background-color: #d8ddde;
+}

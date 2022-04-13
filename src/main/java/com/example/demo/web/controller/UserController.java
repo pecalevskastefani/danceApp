@@ -45,9 +45,6 @@ public class UserController {
         User user = this.userService.findByUsername(username);
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         user.setPhotos(fileName);
-
-       // User savedUser = userService.create(user.getUsername(),user.getPassword(),user.getName(),user.getSurname()
-      //  ,user.getRole(),user.getBirthday());
         User savedUser = this.userService.save(user);
         String uploadDir = "user-photos/" + savedUser.getUsername();
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link  rel="stylesheet" href="/video.css">
+    <style>
+        ss{
+            margin: auto;
+            width: 50%;
+            border: 3px solid green;
+            padding: 10px;
+        }
+    </style>
+</head>
+<div  xmlns:th="http://www.thymeleaf.org" class="container">
+    <div class="text-center" th:if="${session.program!=null}">
+        <video width="850" height="600"  muted controls>
+            <source th:src="@{/videos/video.mp4}" type="video/mp4">
+                 Video
+        </video>
+
+    </div>
+    <div id="ss" class="text-center" style="height: 600px; position: relative"
+         th:if="${session.program==null}">
+
+        <video width="850" height="600"  muted style="filter: blur(3px)" >
+            <source th:src="@{/videos/video.mp4}" type="video/mp4" >
+
+        </video>
+        <h3>To get access to this video you have to apply to a program first
+            <div>
+            <a th:href="@{'/programs'}"
+               class="btn btn-sm">
+                <i class="fa fa-trash " role="alert">Choose a program</i>
+            </a>
+            </div>
+        </h3>
+
+    </div>
+
+    </div>
+
+
+</div>

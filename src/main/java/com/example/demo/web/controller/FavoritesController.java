@@ -50,7 +50,7 @@ public class FavoritesController {
     public String addVideoToFavorites(
             @PathVariable Long id,HttpServletRequest request) {
         try {
-            String email = (String) request.getSession().getAttribute("user");
+            String email = request.getRemoteUser();
             User user = this.userService.findByUsername(email);
             this.favoritesService.addVideoToFavorites(user.getUsername(), id);
             return "redirect:/catalog";
