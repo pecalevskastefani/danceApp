@@ -45,13 +45,3 @@ small {
     color: #ffffff;
     font-weight: 700;
 }
-.footer{
-    background-image: url("/images/DSC_9865.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    color: white;
-    height: 200px;
-    margin-top: -20px;
-}

@@ -3,13 +3,13 @@
 <head>
     <link  rel="stylesheet" href="/video.css">
     <style>
-        ss{
-            margin: auto;
-            width: 50%;
-            border: 3px solid green;
-            padding: 10px;
-        }
+
     </style>
+    <script>
+        function pageRedirect(id) {
+            window.location.href = '/instructor/details/?id='+id ;
+        }
+    </script>
 </head>
 <div  xmlns:th="http://www.thymeleaf.org" class="container">
     <div class="text-center" th:if="${session.program!=null}">
@@ -19,25 +19,31 @@
         </video>
 
     </div>
-    <div id="ss" class="text-center" style="height: 600px; position: relative"
+    <div class="text-center" style="height: 600px; position: relative"
          th:if="${session.program==null}">
 
         <video width="850" height="600"  muted style="filter: blur(3px)" >
             <source th:src="@{/videos/video.mp4}" type="video/mp4" >
 
         </video>
-        <h3>To get access to this video you have to apply to a program first
+        <h3><div style="background-color: #060e2a">To get access to this video you have to apply to a program first!</div>
             <div>
             <a th:href="@{'/programs'}"
-               class="btn btn-sm">
-                <i class="fa fa-trash " role="alert">Choose a program</i>
+               class="btn btn-sm btn-danger">
+                <i class="fa fa-trash " role="alert" >Choose a program</i>
             </a>
             </div>
         </h3>
 
     </div>
-
+    <div class="text-center">
+        <h4 style="color: #fcea0d;font-weight: bolder;">Video details</h4>
+       <h5>Video title: <span style="font-weight: 100" th:text="${video.title}"></span></h5>
+        <h5>Video description: <span style="font-weight: 100" th:text="${video.description}"></span></h5>
+       <h5>Video instructor: <span th:text="${video.instructor.name}" th:id="${video.instructor.id}" onclick="pageRedirect(this.getAttribute('id'))"
+                                    style="cursor: pointer; color: blue; text-decoration: underline;font-weight: 100" > </span></h5>
     </div>
+
 
 
 </div>

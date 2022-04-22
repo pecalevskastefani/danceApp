@@ -18,7 +18,8 @@
     </script>
     <script>
         function pageRedirect(atr) {
-                window.location.href = '/catalog/video';
+
+                window.location.href = '/catalog/video/'+ atr;
         }
     </script>
 
@@ -59,13 +60,13 @@
                 <div th:each="video : ${videos}" style="width:415px;" class="col-4">
                     <div class="card-group" >
                         <div class="card" >
-                            <img alt="#" class="card-img-top" height="255px" th:id="${session.program!=null} ? '#' :'/'"
+                            <img alt="#" class="card-img-top" height="255px" th:id="${video.getId()}"
                                  style="border-radius: 8px" onclick="pageRedirect(this.getAttribute('id'))"
                                  th:src="${video.getUrl()}" width="720px">
                             <br>
                             <h5  class="card-title w3-cursive" th:text="${video.getTitle()}"></h5>
                             <div class="card-body">
-                                <div class="info-video" >
+                                <div class="info-video" th:id="${video.getId()}" >
 
                                     <p class="card-text"  th:text="${video.getDescription()}"></p>
                                     <p class="card-text"  th:text="${video.getInstructor() != null}

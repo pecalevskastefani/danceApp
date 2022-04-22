@@ -1,32 +1,40 @@
 <head>
     <link href="header.css" rel="stylesheet">
-    <link href="favorites.css" rel="stylesheet">
+
 </head>
 <div xmlns:th="http://www.thymeleaf.org">
 
-    <section class="jumbotron text-center">
+    <section class="jumbotron text-center bg-light">
         <div class="container">
-            <h1 class="jumbotron-heading">Users in Program
-                <th:block th:text="${program.getName()}"></th:block>
+            <h1 class="jumbotron-heading" style="color:#f6ff68; font-weight: 600;">Users in program "
+                <th:block style="color:#f6ff68; font-weight: 600;" th:text="${program.getName()}"></th:block>
+                <span style="color:#f6ff68; font-weight: 600;">"</span>
             </h1>
             <small>GROOVE AND GO</small>
         </div>
     </section>
-
     <div class="container mb-4">
         <div class="row">
             <div class="col-12" >
                 <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
+                    <table class="table ">
+
+                        <thead class="thead-dark">
+
                         <tr>
-                            <th scope="col">Users</th>
+                            <th scope="col"><h5>Name</h5></th>
+                            <th scope="col"><h5>Surname</h5></th>
+                            <th scope="col"><h5>Start date of the program</h5></th>
+                            <th scope="col"><h5>End date of the program</h5></th>
 
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="u:${users}" class="cart-item">
-                            <td th:text="${u.getName()}"></td>
+                            <td th:text="${u.name}"></td>
+                           <td th:text="${u.surname}"></td>
+                            <td th:text="${u.program.start.toLocalDate()}"></td>
+                            <td th:text="${u.program.end.toLocalDate()}"></td>
                         </tr>
                         </tbody>
                     </table>

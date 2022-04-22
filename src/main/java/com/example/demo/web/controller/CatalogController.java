@@ -105,9 +105,10 @@ public class CatalogController {
         }
         return "redirect:/catalog";
     }
-    @GetMapping("/catalog/video")
-    public String getVideo(Model model){
-
+    @GetMapping("/catalog/video/{id}")
+    public String getVideo(Model model,@PathVariable Long id){
+        Video video = this.videoService.findById(id);
+        model.addAttribute("video",video);
         model.addAttribute("bodyContent", "video");
         return "master-template";
     }

@@ -67,23 +67,23 @@ public class DataInitializer {
 
 
         //VIDEA
-        this.videoService.create("Baby - Justin Bieber","Description",
+        this.videoService.create("baby - justin Bieber","Description",
                 cateogries.get(5), coaches.get(0),
                 "images/video4.jpg");
-        this.videoService.create("Moonlight - Xxxtentacion","Description",
+        this.videoService.create("moonlight - xxxtentacion","Description",
                 cateogries.get(0), coaches.get(1), "images/video1.jpg");
-        this.videoService.create("Koffee - Rapture","Description",
+        this.videoService.create("koffee - rapture","Description",
                 cateogries.get(3), coaches.get(2),
                 "images/video5.jpg");
-        this.videoService.create("Flo Rida - Low","Description",
+        this.videoService.create("flo rida - low","Description",
                 cateogries.get(0), coaches.get(0),
                 "images/video2.jpg");
 
-        this.videoService.create("Lovely - Billie Eilish, Khalid","Description",
+        this.videoService.create("lovely - billie eilish, khalid","Description",
                 cateogries.get(4), coaches.get(1),
                 "images/video3.jpg");
 
-        this.videoService.create("Confident - Demi Lovato","Description",
+        this.videoService.create("confident - demi lovato","Description",
                 cateogries.get(1), coaches.get(2), "images/video6.jpg");
 
 

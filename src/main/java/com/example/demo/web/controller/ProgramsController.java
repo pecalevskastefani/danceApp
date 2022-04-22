@@ -93,6 +93,7 @@ public class ProgramsController {
                                  @PathVariable Long id) {
        model.addAttribute("program",this.programsService.findById(id));
        model.addAttribute("users",this.programsService.listUsersInProgram(id));
-        return "users-in-program";
+        model.addAttribute("bodyContent", "users-in-program");
+        return "master-template";
     }
 }

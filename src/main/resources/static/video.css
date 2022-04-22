@@ -11,6 +11,14 @@ h3{
     position: absolute;
     margin-top: -311px;
     margin-left: 214px;
-    color: #575656;
-    background-color: #d8ddde;
+    color: white;
+
+
+}
+h4 {
+    text-transform: uppercase;
+}
+h5{
+    font-weight: 600;
+    color: #394562;
 }

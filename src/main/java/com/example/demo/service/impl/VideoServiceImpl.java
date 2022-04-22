@@ -48,7 +48,7 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public void deleteById(Long id) {
-        List<Favorites> favorites = this.favoritesRepository.findAll();
+       List<Favorites> favorites = this.favoritesRepository.findAll();
         List<Video> videos = new ArrayList<>();
         for(Favorites f:favorites){
             for(Video v: f.getVideos() )
