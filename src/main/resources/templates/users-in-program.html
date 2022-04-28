@@ -1,18 +1,53 @@
 <head>
     <link href="header.css" rel="stylesheet">
-
+    <link href="users-in-program.cs" rel="stylesheet">
 </head>
+<style>
+    #back-button{
+        color: #007bff;
+        background-color: #ffffff;
+        border: 3px solid #007bff;
+        font-weight: 600;
+        border-radius: 7px;
+        width: 150px;
+    }
+    #back-button:hover {
+        color: #ffffff;
+        background-color: #007bff;
+        border-color: #ffffff;
+    }
+    div .text-center:first-of-type{
+        padding-top: -3px;
+        background-image: url("/images/DSC_9865.jpg");
+        max-height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+    .jumbotron{
+        opacity: 1;
+    }
+    .jumbotron-heading{
+        font-weight: 600;
+        color: #f6ff68;
+    }
+    .container {
+        margin: auto;
+        width: auto;
+    }
+    small {
+        color: #ffffff;
+        font-weight: 700;
+    }
+</style>
 <div xmlns:th="http://www.thymeleaf.org">
-
-    <section class="jumbotron text-center bg-light">
+    <div class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading" style="color:#f6ff68; font-weight: 600;">Users in program "
-                <th:block style="color:#f6ff68; font-weight: 600;" th:text="${program.getName()}"></th:block>
-                <span style="color:#f6ff68; font-weight: 600;">"</span>
-            </h1>
+            <h1 class="jumbotron-heading">PROGRAMS</h1>
             <small>GROOVE AND GO</small>
         </div>
-    </section>
+    </div>
     <div class="container mb-4">
         <div class="row">
             <div class="col-12" >
@@ -44,7 +79,7 @@
     </div>
     <div >
         <div class="container">
-            <a href="/home" style="color: yellow"> Back </a>
+            <a href="/programs" id="back-button" type="button" class="btn btn-primary"> Back </a>
         </div>
     </div>
 </div>

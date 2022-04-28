@@ -88,8 +88,8 @@
                                             th:text="${s.getName()}">
                                     </option>
                                 </select>
-                                <button class="btn" type="submit">Add</button>
-                                <a class="btn-primary" type="button" style="cursor: pointer">Cancel</a>
+                                <button class="btn add" type="submit">Add</button>
+                                <a class="btn btn-outline-primary" type="button" style="cursor: pointer">Cancel</a>
                             </div>
                         </form>
 
@@ -104,7 +104,7 @@
             <br>
             <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                 <a th:href="@{'/instructors/add-form'}"
-                   class="btn btn-sm edit-instructor 0" id="addNew">
+                   class="btn" id="addNew">
                     Add new instructor
                 </a>
             </th:block>
