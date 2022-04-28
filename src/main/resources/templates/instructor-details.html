@@ -1,9 +1,40 @@
 <head>
+    <title>Instructor Details</title>
     <link href="header.css" rel="stylesheet">
     <link href="catalog.css" rel="stylesheet">
     <style>
         img{
             cursor: pointer;
+        }
+        #back-button{
+            margin-top: 20px;
+        }
+        .card-img-top {
+            opacity: 0.8;
+
+        }
+        .card-img-top:hover {
+            cursor: pointer;
+
+        }
+        .card{
+            border: 4px solid #958d8761;
+            padding: 5px;
+            border-radius: 8px;
+        }
+        .container {
+            margin: auto;
+            width: auto;
+        }
+        h5{
+            text-transform: uppercase;
+            color:#f7653b;
+            font-weight: 700;
+            font-family: system-ui, serif;
+            text-align: center;
+        }
+        .card-text{
+            text-align: center;
         }
     </style>
     <script>
@@ -14,7 +45,7 @@
 </head>
 <div  xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
         <div>
-            <h1 class="text-center">Instructor: <span th:text="${instructor.name}"></span> </h1>
+            <h1 class="text-center">Instructor: <span class="name" th:text="${instructor.name}"></span> </h1>
         </div>
             <div class="container">
                 <div class="row">
@@ -54,7 +85,6 @@
                         <h5  class="card-title w3-cursive" th:text="${video.getTitle()}"></h5>
                         <div class="card-body">
                             <div class="info-video" >
-
                                 <p class="card-text"  th:text="${video.getDescription()}"></p>
                                 <p class="card-text"  th:text="${video.getInstructor() != null}
                             ? ${video.getInstructor().getName()} : 'No Instructor'"></p>
@@ -67,5 +97,8 @@
                 </div>
         </div>
                 </div>
-
+                <div class="container">
+                    <a href="/instructors" id="back-button" type="button" class="btn btn-primary"> Back </a>
+                </div>
+            </div>
 </div>
