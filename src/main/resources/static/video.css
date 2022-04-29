@@ -1,6 +1,6 @@
 .blur{
 
-    background-image: url("/static/images/blur.png");
+    background-image: url("/images/blur.png");
     max-height: 100%;
     background-size: cover;
     background-repeat: no-repeat;

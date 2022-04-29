@@ -32,7 +32,7 @@ public class ProgramsServiceImpl implements ProgramsService{
     }
 
     @Override
-    public Program save(String name, String description, Double price, String url, ArrayList<User> users) {
+    public Program save(String name, String description, Double price, String url) {
         return this.programsRepository.save(
                 new Program(name, description, price, url)
         );
