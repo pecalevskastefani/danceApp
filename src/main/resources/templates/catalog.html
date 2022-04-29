@@ -50,13 +50,15 @@
             <button id="filter" type="submit"  class="btn btn-info">Filter</button>
             </div>
         </form>
+        <li class="nav-item">
+            <a class="nav-link" href="/releaseDates">View upcoming videos</a>
+        </li>
     </div>
 
 
     <div class="jumbotron ">
         <div class="container text-center" style="background-image: none">
             <div class="wrapper row" th:if="${videos.size() > 0}">
-
                 <div th:each="video : ${videos}" style="width:415px;" class="col-4">
                     <div class="card-group" >
                         <div class="card" >
