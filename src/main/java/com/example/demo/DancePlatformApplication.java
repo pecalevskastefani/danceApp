@@ -1,7 +1,8 @@
 package com.example.demo;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,9 +17,11 @@ import org.springframework.social.facebook.api.Facebook;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class DancePlatformApplication {
+public class DancePlatformApplication{
+
 
     public static void main(String[] args) {
+
         SpringApplication.run(DancePlatformApplication.class, args);
     }
     @Bean
@@ -32,4 +35,5 @@ public class DancePlatformApplication {
         Connection<Facebook> connection = connectionRepository.findPrimaryConnection(Facebook.class);
         return (connection == null ? null : connection.getApi());
     }
+
 }
