@@ -47,7 +47,7 @@ public class User implements UserDetails
         this.password = password;
         this.role = role;
         this.birthday = birthday;
-       this.program=program;
+        this.program=program;
     }
 
     @Override

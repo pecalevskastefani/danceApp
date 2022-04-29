@@ -40,10 +40,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
     @Autowired
     private FacebookConnectionSignUp facebookConnectionSignup;
 
-    @Value("${spring.social.facebook.appSecret}")
+    @Value("3d7813e8efb78f463ef1ee150135da21")
     String appSecret;
 
-    @Value("${spring.social.facebook.appId}")
+    @Value("1297386377417980")
     String appId;
 
     //so providerSignInController dozvolvuame da se logiraat preku fb

@@ -76,7 +76,7 @@ public class ProgramsController {
             this.programsService.update(id,name,description,price);
         } else {
         //    List<User> emptyUsers = new ArrayList<>();
-            this.programsService.save(name,description,price,url);
+            this.programsService.save(name,description,price,url, new ArrayList<User>());
         }
         return "redirect:/programs";
     }

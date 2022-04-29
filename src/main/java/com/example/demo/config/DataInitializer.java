@@ -67,23 +67,23 @@ public class DataInitializer {
 
 
         //VIDEA
-        this.videoService.create("baby - justin Bieber","Description",
+        this.videoService.create("Baby - Justin Bieber","Description",
                 cateogries.get(5), coaches.get(0),
                 "images/video4.jpg");
-        this.videoService.create("moonlight - xxxtentacion","Description",
+        this.videoService.create("Moonlight - Xxxtentacion","Description",
                 cateogries.get(0), coaches.get(1), "images/video1.jpg");
-        this.videoService.create("koffee - rapture","Description",
+        this.videoService.create("Koffee - Rapture","Description",
                 cateogries.get(3), coaches.get(2),
                 "images/video5.jpg");
-        this.videoService.create("flo rida - low","Description",
+        this.videoService.create("Flo Rida - Low","Description",
                 cateogries.get(0), coaches.get(0),
                 "images/video2.jpg");
 
-        this.videoService.create("lovely - billie eilish, khalid","Description",
+        this.videoService.create("Lovely - Billie Eilish, Khalid","Description",
                 cateogries.get(4), coaches.get(1),
                 "images/video3.jpg");
 
-        this.videoService.create("confident - demi lovato","Description",
+        this.videoService.create("Confident - Demi Lovato","Description",
                 cateogries.get(1), coaches.get(2), "images/video6.jpg");
 
 
@@ -98,8 +98,8 @@ public class DataInitializer {
             );
         }
 
-        this.programsService.save("Monthly Plan", "For $14.99 per month ($179.99 paid yearly) you get 24/7 access to all G&G content.",14.99, "https://alpha.uscreencdn.com/images/offer/36783/big_12796_2Foffer_image_2F70csReQZRLihJZ3OkTj5_Payment_20Thumbnails_20-_20MONTHLY.jpg");
-        this.programsService.save("3 Month Plan", "For $11.99 per month ($143.99 paid yearly) you get 24/7 access to all G&G content.",11.99, "https://alpha.uscreencdn.com/images/offer/59916/big_Payment_Plan_-_3_Months_v2.1629129860.jpeg");
-        this.programsService.save("Annual Plan", "For $5.83 per month ($69.99 paid yearly) you get 24/7 access to all G&G content.",5.83, "https://alpha.uscreencdn.com/images/offer/35765/big_Payment_Plan_-_Yearly_v2.1629129904.jpeg");
+        this.programsService.save("Monthly Plan", "For $14.99 per month ($179.99 paid yearly) you get 24/7 access to all G&G content.",14.99, "https://alpha.uscreencdn.com/images/offer/36783/big_12796_2Foffer_image_2F70csReQZRLihJZ3OkTj5_Payment_20Thumbnails_20-_20MONTHLY.jpg",new ArrayList<User>());
+        this.programsService.save("3 Month Plan", "For $11.99 per month ($143.99 paid yearly) you get 24/7 access to all G&G content.",11.99, "https://alpha.uscreencdn.com/images/offer/59916/big_Payment_Plan_-_3_Months_v2.1629129860.jpeg",new ArrayList<User>());
+        this.programsService.save("Annual Plan", "For $5.83 per month ($69.99 paid yearly) you get 24/7 access to all G&G content.",5.83, "https://alpha.uscreencdn.com/images/offer/35765/big_Payment_Plan_-_Yearly_v2.1629129904.jpeg",new ArrayList<User>());
     }
 }
