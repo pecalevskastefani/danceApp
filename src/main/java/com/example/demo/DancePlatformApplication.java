@@ -14,9 +14,10 @@ import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 
+@SpringBootApplication
 @Configuration
-@EnableAutoConfiguration
-@ComponentScan
+//@EnableAutoConfiguration
+//@ComponentScan
 public class DancePlatformApplication{
 
 
