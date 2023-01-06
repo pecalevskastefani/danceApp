@@ -13,7 +13,7 @@ pipeline {
        stage('Build docker image'){
             steps{
                 script{
-                    sh 'sudo docker build -t stefpecal/danceapp .'
+                    sh 'docker build -t stefpecal/danceapp .'
                 }
             }
         }
