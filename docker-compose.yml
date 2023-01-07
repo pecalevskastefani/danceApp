@@ -1,0 +1,28 @@
+version: '3'
+services:
+  database:
+    container_name: danceApp
+    image: postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=dance123
+      - POSTGRES_DB=danceApp
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  danceApp:
+    depends_on:
+      - database
+    image: danceapp.jar
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/danceApp
+    ports:
+      - "9090:9090"
+
+volumes:
+  postgres-data:
+    driver: local
