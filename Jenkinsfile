@@ -17,5 +17,13 @@ pipeline {
                 }
             }
         }
+        stage("Push image"){
+            steps {
+                withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+                    sh 'docker login -u stefpecal -p ${dockerhub}'
+                }
+                sh 'docker push stefpecal/danceapp'
+            }
+        }
     }
 }
