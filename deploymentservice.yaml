@@ -25,7 +25,7 @@ spec:
 apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
-  name: atmlocator-k8ssvc
+  name: danceapp-k8ssvc
 spec:
   selector:
     app: danceapp
