@@ -36,5 +36,4 @@ public class DancePlatformApplication{
         Connection<Facebook> connection = connectionRepository.findPrimaryConnection(Facebook.class);
         return (connection == null ? null : connection.getApi());
     }
-
 }

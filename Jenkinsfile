@@ -7,22 +7,26 @@ pipeline {
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pecalevskastefani/danceApp']]])
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
        stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t stefpecal/danceapp .'
+                    bat 'docker build -t stefpecal/danceapp .'
                 }
             }
         }
         stage("Push image"){
             steps {
-                withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-                    sh 'docker login -u stefpecal -p ${dockerhub}'
+                bat 'docker push stefpecal/danceapp'
+            }
+        }
+         stage('Deploy to K8S'){
+            steps{
+                script{
+                   kubernetesDeploy configs:'deploymentservice.yaml', kubeConfig: [path: ''], kubeconfigId: 'k8sconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
                 }
-                sh 'docker push stefpecal/danceapp'
             }
         }
     }
